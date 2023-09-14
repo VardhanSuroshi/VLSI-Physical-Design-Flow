@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_asic_class/assets/132068498/84c06100-dffc-48a1-9b48-fd86f53942bd" alt="Image" width="900">
+</p>
+
+
+
 # About the project 
 This project offers an immersive tutorial experienced within the context of the VSD Advanced Physical Design workshop, focusing on the utilization of OpenLANE.
 
@@ -9,6 +15,29 @@ OpenLANE represents a revolutionary automated RTL to GDSII flow, integrating ess
 - **Design Exploration**: Skill in using custom methodology scripts for design exploration and optimization.
 - **Skywater 130nm PDK**: Expertise in working with the Skywater 130nm open-source Process Design Kit.
 - **Hands-On Chip Development**: Experience in producing hard macros and complete chips autonomously.
+
+
+Table of Contents:
+
+# Table of Contents
+
+1. [About the Project](#about-the-project)
+2. [Why Do We Need a Chip?](#why-do-we-need-a-chip)
+   + [Components of a Chip](#components-of-a-chip)
+   + [Key Components Needed for ASIC Development](#key-components-needed-for-asic-development)
+   + [Why Open-Source Tools for ASIC Development?](#why-open-source-tools-for-asic-development)
+4. [About OpenLane](#about-openlane)
+   + [OpenLane Integrated Tools](#openlane-integrated-tools)
+   + [OpenLane Output](#openlane-output)
+5. 
+
+# About the Project
+
+This project offers an immersive tutorial experience within the context of the VSD Advanced Physical Design workshop, focusing on the utilization of Open
+
+
+
+
 
 
 
@@ -95,6 +124,7 @@ The hope for open-source ASIC flows like OpenLane is to provide multiple benefit
 OpenLane is an open-source automated toolchain for designing Application-Specific Integrated Circuits (ASICs) from RTL (Register-Transfer Level) to GDSII (Graphic Data System II) layout. It streamlines the ASIC design process by integrating various open-source tools, allowing for efficient chip development and tape-out without human intervention.
 
 
+### OpenLane Integrated Tools
 OpenLane flow consists of several stages. By default, all flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLane can also be run interactively.
 
 ![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/c216442f-36bd-45e4-8659-2de69d4945d8)
