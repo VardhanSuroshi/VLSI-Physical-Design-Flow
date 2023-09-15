@@ -27,10 +27,13 @@ OpenLANE represents a revolutionary automated RTL to GDSII flow, integrating ess
    + [Components of a Chip](#components-of-a-chip)
    + [Key Components Needed for ASIC Development](#key-components-needed-for-asic-development)
    + [Why Open-Source Tools for ASIC Development?](#why-open-source-tools-for-asic-development)
-4. [About OpenLane](#about-openlane)
+   + 
+
+4. [Overview of RTL to GDS Flow](#overview-of-rtl-to-gds-flow)
+5. [About OpenLane](#about-openlane)
    + [OpenLane Integrated Tools](#openlane-integrated-tools)
    + [OpenLane Output](#openlane-output)
-5. 
+6. [DAY 1: OpenLane and SKYWATER-130](#day-1-openlane-and-skywater-130)
 
 
 
@@ -69,7 +72,7 @@ OpenLANE represents a revolutionary automated RTL to GDSII flow, integrating ess
 
 
 
-
+---
 
 ## Why do we need a Chip?
 
@@ -107,7 +110,17 @@ A chip comprises several key components:
 
 
 
+---
+
 # Overview of RTL to GDS Flow:
+
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/cd68124d-2274-4a3f-8ae3-6e868245f64f" alt="Image" width="600">
+</p>
+
 
 The RTL to GDS (Register-Transfer Level to Graphic Data System) flow is a complex process that transforms a high-level chip design into a physical layout ready for manufacturing. Here are the key steps involved:
 
@@ -138,7 +151,7 @@ The RTL to GDS (Register-Transfer Level to Graphic Data System) flow is a comple
 - Generate the GDS (Graphic Data System) file.
 - This binary file format represents the complete chip layout, including geometric details and interconnections.
 
-7.Signoff
+7. Signoff
 - Encompasses verification and validation steps.
 
 The RTL to GDS flow is a critical process in chip design, ensuring the translation of high-level design into a manufacturable physical layout.
@@ -155,7 +168,7 @@ The RTL to GDS flow is a critical process in chip design, ensuring the translati
 
 
 
-
+---
 
 ### Key Components Needed for ASIC Development
 
@@ -177,7 +190,7 @@ To develop an ASIC efficiently, you need three key components:
 
 
 
-
+---
 
 ## Why Open-Source Tools for ASIC Development?
 
@@ -208,13 +221,12 @@ OpenLane flow consists of several stages. By default, all flow steps are run in 
 
 
 
-
 1. Synthesis
 
 - **yosys/abc**: Perform RTL synthesis and technology mapping.
 - **OpenSTA**: Performs static timing analysis on the resulting netlist to generate timing reports.
 
-2. Floorplaning
+2. Floorplanning
 
 - **init_fp**: Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing).
 - **ioplacer**: Places the macro input and output ports.
@@ -240,7 +252,7 @@ OpenLane flow consists of several stages. By default, all flow steps are run in 
 6. Tapeout
 
 - **Magic**: Streams out the final GDSII layout file from the routed def.
-- **KLayout**: Streams out the final GDSII layout file from the routed def as a back-up.
+- **KLayout**: Streams out the final GDSII layout file from the routed def as a backup.
 
 7. Signoff
 
@@ -306,12 +318,23 @@ The Skywater PDK files we are working with are described under ```pdks```
 3. **Sky130A**: Specifically tailored for Skywater, this directory houses open-source-compatible PDK files. They are designed to work harmoniously with open-source EDA tools, empowering users to develop ASICs without reliance on proprietary software.
 
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e5ad6085-ab88-42a8-9da5-e378b0f8d73b)
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e5ad6085-ab88-42a8-9da5-e378b0f8d73b" alt="Image" width="900">
+</p>
+
+
 
 ---
 All the designs, we are going to use in this lab are present under the design directory :
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/d4c8f8c4-0c0e-4435-bbe9-3fbe58978d02)
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/d4c8f8c4-0c0e-4435-bbe9-3fbe58978d02" alt="Image" width="900">
+</p>
+
+
+
 
 ---
 
@@ -326,11 +349,26 @@ In each design hierarchy, you will find two distinct components:
 
 2. **Config.tcl Files**: These are design-specific configuration files used by OpenLANE. They include switches and settings that tailor the ASIC design flow for your specific project. 
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ac2dc627-8ced-4a78-ab35-d65b6744edd4)
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ac2dc627-8ced-4a78-ab35-d65b6744edd4" alt="Image" width="900">
+</p>
+
+
+
+
 
 here is the comparsion between ```config.tcl``` and ```sky130A_sky130_fd_sc_hd_congfig.tcl```
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/cc021a4b-9ce4-4820-9a61-c2bdf1d1a8a7)
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/cc021a4b-9ce4-4820-9a61-c2bdf1d1a8a7" alt="Image" width="900">
+</p>
+
+
+
+
 
 
 ## Hands-on OpenLane Flow :
@@ -356,7 +394,12 @@ To ensure that OpenLane functions correctly, you need to manage software depende
 package require openlane 0.9
 ```
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/03f058c6-071a-4d14-94fb-214a39747cec)
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/03f058c6-071a-4d14-94fb-214a39747cec" alt="Image" width="900">
+</p>
+
+
 
 
 
@@ -371,7 +414,12 @@ In OpenLane, the "prep" step is crucial for setting up the file structure and me
 
 + **Merging Technology and Cell Data**: The command merges essential technology LEF data, which includes layer definitions and design rules needed for Place-and-Route (PnR). Additionally, it combines cell LEF data, reducing Design Rule Check (DRC) errors during the PnR process.
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/c9661546-4ddd-43e7-a871-3e3bbfac5d34)
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/c9661546-4ddd-43e7-a871-3e3bbfac5d34" alt="Image" width="900">
+</p>
+
+
 
 
 
@@ -386,7 +434,11 @@ prep -design <design_name> -tag <tag>
 After running the ```prep``` command, you'll find a well-structured project directory with all the necessary information and configurations, ready for the OpenLane flow.
 
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/aca81212-fdd9-414e-a450-ce1715793378)
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/aca81212-fdd9-414e-a450-ce1715793378" alt="Image" width="900">
+</p>
 
 
 
@@ -399,15 +451,21 @@ To access the reports generated during the synthesis step in OpenLane, navigate 
 Inside this directory, you'll find various reports specific to the tools used in the synthesis process. These reports provide detailed insights and analysis of your design at this stage.
 
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ed942b85-817c-4ad4-b0c0-84a1bff79b9d)
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ed942b85-817c-4ad4-b0c0-84a1bff79b9d" alt="Image" width="900">
+</p>
+
 
 
 
 
 **Fixing Timing Violation:**
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ce558ea3-a100-4a9a-b4ef-97cb0f608d52)
 
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ce558ea3-a100-4a9a-b4ef-97cb0f608d52" alt="Image" width="900">
+</p>
 
 
 
@@ -417,9 +475,16 @@ In the timing report, if you encounter a slack violation (e.g., -24.89), it indi
 
 By modifying the CLK period, you can effectively manage the timing constraints and address slack violations in your OpenLane project.
 
-how setting the CLK Period: 55 slack violation was reduced to 0 
 
-Note : Reducing Slack Violation is an iterative process 
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b2e3a45c-40a4-4377-badc-dbc74f6fed7e" alt="Image" width="900">
+</p>
+
+
+
+now setting the CLK Period to 55, the slack violation was reduced to 0. 
+
+**Note: Reducing Slack Violations is an iterative process**
 
 
 
