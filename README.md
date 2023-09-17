@@ -666,7 +666,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 
 
-zoomed view of core with all the standard cell place in between power can ground rail 
+zoomed view of the core with all the standard cells place in between power can ground rail 
 
 <p align="center">
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/34d18189-7cf7-4ad6-a0d7-d705e19d5b4d" alt="Image" width="600">
@@ -686,11 +686,11 @@ zoomed view of core with all the standard cell place in between power can ground
 Libraries and characterization are fundamental pillars in the IC design process. Libraries offer standardized building blocks that enhance design efficiency and reusability. Characterization, on the other hand, provides critical data for accurately modeling and simulating component behavior. This ensures that the final design aligns with performance, power, and reliability objectives.
 
 
-Standard cell library contains description of different varity of cells 
+Standard cell library contains a description of different variety of cells 
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6e15b59e-3062-41d8-970e-e9af3c93775f" alt="Image" width="300">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6e15b59e-3062-41d8-970e-e9af3c93775f" alt="Image" width="600">
 </p>
 
 
@@ -700,10 +700,10 @@ Standard cell library contains description of different varity of cells
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ef9de032-7f16-4003-980e-ac7333831412" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ef9de032-7f16-4003-980e-ac7333831412" alt="Image" width="400">
 </p>
 
-
+---
 ### 1. Inputs
 
 **PDK and spice models**
@@ -716,17 +716,18 @@ Standard cell library contains description of different varity of cells
 
 ---
 
-**User Defined parameters**
+**User-Defined parameters**
 
 
 <p align="center">
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a58788e4-49a2-419a-aee2-20b975d42782" alt="Image" width="600">
 </p>
 
+---
 
 ### 2. Design steps 
 
-**Ciruit Design**
+**Circuit Design**
 
 
 <p align="center">
@@ -750,7 +751,7 @@ Standard cell library contains description of different varity of cells
 
 ### 3.Characterization Flow
 
-To perform charcterzation  [GUNA tool](https://www.paripath.com/Products/Guna)  is used : 
+To perform characterzation  [GUNA tool](https://www.paripath.com/Products/Guna)  is used : 
 
 
 
@@ -771,6 +772,230 @@ Additionally, we need to define the timing definition such as :
 
 ---
 
+# Day 3: Design of Cell Library
+
+## SPICE Deck Creation & Simulation
+
+A SPICE deck is a crucial component in the IC design process, containing essential information for circuit simulation. Below, we describe a sample SPICE deck for a PMOS and NMOS transistor circuit, along with steps for simulation using Ngspice.
+
+### SPICE Deck Components
+
+1. **Model Descriptions**: Defines the characteristics of components in the circuit.
+2. **Netlist Description**: Lists the circuit's components, connections, and values.
+3. **Simulation Type and Parameters**: Specifies the type of simulation and its parameters.
+4. **Libraries Included**: Links external libraries with component models.
+
+### Sample SPICE Deck
+
+```spice
+*** MODEL DESCRIPTIONS ***
+*** NETLIST DESCRIPTION ***
+
+M1 out in vdd vdd pmos W=0.375u L=0.25u   ; PMOS transistor M1 with width (W) of 0.375u and length (L) of 0.25u
+M2 out in 0 0 nmos W=0.375u L=0.25u   ; NMOS transistor M2 with width (W) of 0.375u and length (L) of 0.25u
+
+cload out 0 10f   ; Capacitor load (cload) connected between node 'out' and ground (0) with a value of 10 femtofarads (10f)
+
+Vdd vdd 0 2.5   ; Voltage source Vdd connected between node 'vdd' and ground (0) with a voltage of 2.5 volts
+Vin in 0 2.5   ; Voltage source Vin connected between node 'in' and ground (0) with a voltage of 2.5 volts
+
+*** SIMULATION Commands ***
+
+.op   ; Perform a DC operating point analysis
+
+.dc Vin 0 2.5 0.05   ; Perform a DC sweep of Vin from 0 to 2.5 volts in steps of 0.05 volts
+
+*** include tsmc_025um_model.mod ***   ; Include the model file 'tsmc_025um_model.mod'
+
+.LIB "tsmc_025um_models.mod" CMOS_MODELS   ; Link the library 'tsmc_025um_models.mod' and define it as 'CMOS_MODELS'
+
+.end   ; End of the SPICE netlist
+
+```
+
+
+
+## SPICE Simulation Using Ngspice
+
+Follow these steps for simulation:
+
+1. Source the circuit file in Ngspice using `source <file_name>.cir`.
+2. Execute the simulations using the `run` command.
+3. Use `setplot` to prepare for plotting.
+4. For DC analysis (as indicated in the .cir file), use `dc1` to prepare the DC plot.
+5. Display available vectors using `display`.
+6. Plot specific vectors, e.g., `plot vout vs vin`, to visualize the circuit behavior.
+
+
+## SPICE Simulation using Ngspice
+
+
+Follow these steps for SPICE simulation:
+
+Source the circuit file in Ngspice using the command: source <file_name>.cir
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b161615b-7712-42b2-929d-43f030b23fc8" alt="Source Circuit File" width="600">
+</p>
+Once the .cir file is loaded, execute the simulations by typing: run
+
+To prepare for plotting, use the setplot command.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/19be940c-94a8-4a06-8d9f-daaee572758c" alt="Set Plot" width="600">
+</p>
+Since we are performing a DC analysis, use dc1 to prepare the DC plot.
+
+To see all the available vectors for plotting, type: display
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6b0229ef-7cea-4dea-b35e-6f185ffda868" alt="Display Vectors" width="600">
+</p>
+To plot Vout vs. Vin, use the command: plot vout vs vin
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/f4f87448-db9d-4f8b-ac22-8b59798934c9" alt="Vout vs. Vin Plot" width="600">
+</p>
+To obtain a symmetric DC plot, you can scale the aspect ratio of PMOS by 2.5 times.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/2dda74a3-3575-466b-900c-6ef343277a57" alt="Symmetric DC Plot" width="600">
+</p>
+The Vin = Vout point is crucial as it indicates when both transistors are active, leading to peak power consumption.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6c375afd-8b34-4da8-8fd3-235614d94fde" alt="Vin = Vout Point" width="600">
+</p>
+You can vary the CMOS inverter threshold value to make it symmetric and robust.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/72954c80-a83f-4262-b512-c4dc5842d6a5" alt="Threshold Variation" width="600">
+</p>
+These steps guide you through the SPICE simulation process using Ngspice, enabling you to visualize and analyze the behavior of your circuit.
+
+
+
+
+
+The symmetric DC plot can be achieved by adjusting the PMOS aspect ratio.
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/2dda74a3-3575-466b-900c-6ef343277a57" alt="Threshold Variation" width="600">
+</p>
+
+
+The Vin = Vout point is crucial, as it signifies when both transistors are active, leading to peak power consumption.
+
+
+
+
+
+### SPICE Deck for Transient Analysis
+For transient analysis, the following SPICE deck can be used:
+```
+spice
+Copy code
+*** MODEL DESCRIPTIONS ***
+*** NETLIST DESCRIPTION ***
+
+M1 out in vdd vdd pmos W=0.375u L=0.25u   ; PMOS transistor M1 with width (W) 0.375u and length (L) 0.25u
+M2 out in 0 0 nmos W=0.375u L=0.25u   ; NMOS transistor M2 with width (W) 0.375u and length (L) 0.25u
+
+cload out 0 10f   ; Capacitive load (cload) between node out and ground (0) with a value of 10 femtofarads (10f)
+
+Vdd vdd 0 2.5   ; Voltage source Vdd with a value of 2.5V, connected between node vdd and ground (0)
+Vin in 0 0 pulse 0 2.5 0 10p 10p 1n 2n   ; Voltage source Vin with a pulse waveform
+
+*** SIMULATION Commands ***
+
+.op   ; Operating point analysis
+
+.trans 10p 4n   ; Transient analysis from 10 picoseconds to 4 nanoseconds
+
+*** include tsmc_025um_model.mod ***
+.LIB "tsmc_025um_models.mod" CMOS_MODELS   ; Include the library file "tsmc_025um_models.mod" for CMOS models
+
+.end   ; End of the SPICE netlist
+
+
+```
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/aebccb6b-a705-42a4-b23a-c1a4772d5969" alt="Threshold Variation" width="600">
+</p>
+
+
+
+## Fabrication Process for a CMOS Inverter
+
+Fabrication of CMOS Inverter is a 16-mask process
+
+### 1. Selecting the substrate 
+
+- P-type substrate with resistivity around (5-50 ohm) doping level (10^15 cm^-3) and orientation (100).
+- Note that substrate doping should be less than well doping (used to fabricate NMOS and PMOS)
+
+### 2. Create active resistance
+
+This step creates pockets for NMOS and PMOS
+1. Grow SiO2(~40nm) on Psub
+2. deposit ~80nm Si3N4 on SiO2
+3. deposit 1um layer of photoresist(used to define regions)
+4. photolithography
+5. etch out Si3N4 and SiO2 using a suitable solvent
+6. Place the obtained structure in an oxidation furnace due to which field oxide is grown.This process is called ```LOCOS``` that is ```Local oxidation of silicon```
+7. Etch out Si3N4 using hot phosphoric acid
+
+### 3.NWel and PWel formation
+
+- Apply photoresist, apply a mask that covers NMOS
+- Expose to UV, Wash, remove the mask, apply boron(p-type) using Ion Implantation at an energy of 200Kev(for diffusion)
+- repeat it for the other half using phosphorous @400Kev because phosphorous is heavier
+- Wells have been created but the depth is low. Therefore subject it to high high-temperature furnace which increases the well depth.
+
+### 4. Formation of Gate
+
+- We repeat step 3 but at low energy with a p-type implant as boron @60Kev and an n-type implant as Arsenic.
+- Due to this The SiO2 is damaged as the dopants penetrate through it.
+- Therefore original SiO2 is etched out using dilute HF solution and regrown to give high-quality oxide(~10 nm thin)
+- Finally for the gate to form, apply N-type ion implants for low gate resistance.
+- Now mask on small width of Nwell and PWell above SiO2  and perform photolithography
+- Gate Formation is Done
+
+### 5. Lightly Doped Drain Formation(LDD Formation)
+
+- On the surface of SiO2 corresponding to NWell, apply photoresist, mask it, and put phosphorous to make N-Implant on p-well(N-)
+- Similarly do it for the other side using boron that forms (p-) implant
+- This LDD has to be protected from further process
+- so, Deposit 0.1um thick SiO2 on the full structure and etch out using plasma anisotropic etching that results in the formation of sidewall spacers.
+
+### 6. Source and Drain Formation
+
+- Mask Nwell structure, deposit arsenic @75KeV that forms an N+ implant on Pwell
+- use boron for P+ implant formation on Nwell
+- Subject it to high high-temperature furnace that results in the required thickness of N+, P+, N-, and P- implants.
+
+### 7. Steps to form contacts and interconnects
+
+- Etch thin SiO2 oxide in HF solution
+- Deposit Titanium of wafer surface using sputtering all over the structure
+- Wafer heated at 600-700 degrees in ambient N2 environment for 60 sec that results in low resistance TiSi2 where the gate of both MOS is present.
+- At the other places, TiN is formed that's used for local communication
+- Etch off TiN on and half around the gate structure of both MOS using RCA Cleaning
+
+### 8. Higher-level metal formation
+
+- On the resulting structure, deposit a thick layer of (1um) SiO2 doped with P/B known as phosphoborosilicate glass
+- To make the added surface plain, use CMP (Chemical Metal Polishing)
+- For the creation of contact pins, proper holes with contacts have to be made
+- This can be done using Al, W, and TiN layer depositions.
+- Deposit a layer of Si3N4 that acts as a dielectric to protect the chip.
+
+### 9. Final STructure
+
+ ![image](https://github.com/yagnavivek/PES_OpenLane_PD/assets/93475824/0e355a75-55ff-4723-96ae-4abd5845697c)
 
 
 
