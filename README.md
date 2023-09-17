@@ -761,6 +761,19 @@ To perform charcterzation  [GUNA tool](https://www.paripath.com/Products/Guna)  
 
 ---
 
+Additionally, we need to define the timing definition such as :
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/61fe504e-6f76-4533-ab2d-fc63580022fe" alt="Image" width="600">
+</p>
+
+
+---
+
+
+
+
 
 
 
