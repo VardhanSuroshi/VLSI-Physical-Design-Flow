@@ -487,6 +487,21 @@ now setting the CLK Period to 55, the slack violation was reduced to 0.
 **Note: Reducing Slack Violations is an iterative process**
 
 
+Results at the end of the synthesis process: 
+1. Optimized RTL
+2. Technology mapped netlist 
+3. Estimated approx core area/gate count 
+4. Operating frequency and respective timing reports
+
+
+a snap of the netlist : 
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/1abe69c2-91ae-412f-8d50-c483334b2fe4" alt="Image" width="900">
+</p>
+
+
 # Day 2: Floorplanning
 
 
@@ -592,6 +607,165 @@ Magic has the following GUI interface and a console window to execute commands
 <p align="center">
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e6c91984-7bfc-428d-934d-59c148a4b9ac" alt="Image" width="600">
 </p>
+
+if we zoom in a little we can see that some of the micro, IO pad, and tap-cells have been placed appropriately. 
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/3c77fa69-17d5-4240-a7c7-f2bf4b6119d0" alt="Image" width="600">
+</p>
+
+
+---
+
+## Placement in Chip Design
+
+### 1. Netlist Binding
+
+Netlist binding is the process of mapping the logical representation of a digital design onto standard cell shapes from a library. Each component in the netlist is mapped to a specific shape defined in the library.
+
+### 2. Initial Placement Design
+
+In this phase, components from the netlist are placed within the chip's core area. Key considerations include:
+
+1. **Proximity to Pins**: Components are strategically placed based on their distance from input and output pins to minimize signal delays.
+
+2. **Signal Optimization**: Signals requiring rapid propagation, such as FF1 to FF2, are placed close together. Buffer cells may be added for signal integrity.
+
+3. **Wire-Length and Capacitance Estimation**: Wire length and capacitance estimates guide placement optimization, factoring in signal delay, power consumption, and integrity.
+
+### 3. Final Placement Optimization
+
+The final placement phase fine-tunes component layout within the chip, optimizing for performance. It assumes an ideal clock and aims to minimize signal delays, conserve power, and meet design constraints.
+
+
+
+---
+
+The next step in the Digital ASIC design flow after floorplanning is placement. The synthesized netlist has been mapped to standard cells and floorplanning phase has determined the standard cells rows, enabling placement. OpenLane does placement in two stages:
+
+1. **Global Placement** - Optimized but not legal placement. Optimization works to reduce wirelength by reducing half parameter wirelength
+2. **Detailed Placement** - Legalizes placement of cells into standard cell rows while adhering to global placement
+
+To do placement in OpenLane:
+```
+run_placement
+```
+
+For placement to converge the overflow value needs to be converging to 0. At the end of placement cell legalization will be reported:
+
+
+### Viewing Placement in Magic
+To view placement in Magic the command mirrors viewing floorplanning, go to results/floorplan directory and use command:
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/517d6c11-fe43-4f6c-a7ec-11db12eaf91d" alt="Image" width="600">
+</p>
+
+
+
+zoomed view of core with all the standard cell place in between power can ground rail 
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/34d18189-7cf7-4ad6-a0d7-d705e19d5b4d" alt="Image" width="600">
+</p>
+
+---
+
+
+
+
+
+
+## Standard Cell Design and Characterisation :
+
+
+
+Libraries and characterization are fundamental pillars in the IC design process. Libraries offer standardized building blocks that enhance design efficiency and reusability. Characterization, on the other hand, provides critical data for accurately modeling and simulating component behavior. This ensures that the final design aligns with performance, power, and reliability objectives.
+
+
+Standard cell library contains description of different varity of cells 
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6e15b59e-3062-41d8-970e-e9af3c93775f" alt="Image" width="300">
+</p>
+
+
+
+### Cell design flow : 
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ef9de032-7f16-4003-980e-ac7333831412" alt="Image" width="600">
+</p>
+
+
+### 1. Inputs
+
+**PDK and spice models**
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/52704541-c7c5-445a-9e48-20939f08b9ea" alt="Image" width="600">
+</p>
+
+
+---
+
+**User Defined parameters**
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a58788e4-49a2-419a-aee2-20b975d42782" alt="Image" width="600">
+</p>
+
+
+### 2. Design steps 
+
+**Ciruit Design**
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/9b4c5107-6846-4053-aaf8-4b375776c6d2" alt="Image" width="600">
+</p>
+
+
+
+---
+
+**Layout Design**
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/76fc4dfe-b219-4672-adbb-0f5ec8c1adff" alt="Image" width="600">
+</p>
+
+
+---
+
+
+### 3.Characterization Flow
+
+To perform charcterzation  [GUNA tool](https://www.paripath.com/Products/Guna)  is used : 
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/9fe55d1b-aedf-4073-b6ad-1cce804ce635" alt="Image" width="600">
+</p>
+
+
+---
+
+
+
+
+
+
 
 
 
