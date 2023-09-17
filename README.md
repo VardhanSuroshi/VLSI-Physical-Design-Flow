@@ -487,6 +487,112 @@ now setting the CLK Period to 55, the slack violation was reduced to 0.
 **Note: Reducing Slack Violations is an iterative process**
 
 
+# Day 2: Floorplanning
+
+
+Floorplanning is a critical phase in chip design that establishes the initial chip layout and organization, ensuring efficient use of resources and meeting design goals.
+In the Floorplanning phase, the following key actions are typically performed:
+
+1. **Die Area**: Define the total area of the chip's semiconductor material.
+
+2. **Core Area**: Specify the area within the die that contains the primary logic and functional components.
+
+3. **Core Utilization**: Determine the utilization factor, representing the ratio of the area occupied by the netlist to the core area (usually 50%-70%).
+
+4. **Aspect Ratio**: Establish the aspect ratio, which is the ratio of height to width (1 for square, other values for rectangles).
+
+5. **Place Macros**: Arrange pre-designed macros such as memories, clock gating cells, comparators, muxes, etc., within the core area.
+
+6. **Power Distribution Network**: Set up the power distribution network, which may include power straps and taps (although this is sometimes done later in tools like OpenLANE).
+
+7. **Place Input and Output Pins**: Determine the locations for input and output pins, optimizing for signal integrity, power consumption, and timing considerations.
+
+
+
+---
+
+## Key Aspects of Floorplanning in Chip Design
+
+
+### 1. Utilization Factor and Aspect Ratio
+
+- **Utilization Factor**: This represents the amount of die core area occupied by standard cells. It's typically maintained within the range of 50%-70% (utilization factor of 0.5-0.7). This range ensures optimal placement and feasible routing within the chip, promoting efficient use of resources.
+
+- **Aspect Ratio**: The aspect ratio defines the shape of the chip and is calculated by dividing the height of the core area by its width. An aspect ratio of 1 indicates a square chip. Aspect ratio choices influence the chip's physical dimensions and layout.
+
+### 2. Preplaced Cells (MACROs)
+
+- Preplaced cells, often referred to as MACROs, play a crucial role in enabling hierarchical chip design. They allow VLSI engineers to modularize larger designs. In floorplanning, preplaced cells are assigned specific locations within the core area. Blockages are also defined to ensure that standard cells are not placed in the preplaced cell regions.
+
+### 3. Decoupling Capacitors
+
+- Decoupling capacitors are strategically placed near preplaced cells during Floorplanning. They address voltage drops caused by interconnecting wires, which can disrupt noise margins or induce an indeterminate state in circuits. These capacitors charge up to the power supply voltage over time and act as reservoirs of charge. When the circuit requires a transition, they supply the needed charge, effectively decoupling the circuit from the main power supply and stabilizing operation.
+
+### 4. Power Planning
+
+- Power planning is a vital aspect of Floorplanning aimed at reducing noise in digital circuits due to voltage droop and ground bounce. Coupling capacitance forms between interconnect wires and the substrate. During transitions on a net, the charge associated with coupling capacitors may be dumped to the ground. Sufficient ground taps and a robust power distribution network (PDN) with multiple power strap taps are essential to lower resistance, maintain ground voltage stability, and enhance noise margins.
+
+### 5. Pin Placement
+
+- Pin placement optimization is crucial for minimizing buffering, improving power efficiency, and managing timing delays. It involves determining the specific locations along the I/O ring where pins should be placed, guided by the connectivity information of the HDL netlist. Well-optimized pin placement can reduce buffering requirements and subsequently lower power consumption. Blockages are often introduced to distinguish between the core and I/O areas, ensuring proper isolation.
+
+---
+
+
+## Floorplan using OpenLane 
+
+OpenLane has many commands that can used to customize Floorplan design. A compressive list of those commands can be found in the ```openlane/configuration/readme``` file. 
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/61d8ca74-81f3-4cba-b912-32970bbfe837" alt="Image" width="900">
+</p>
+
+
+
+
+To get a details list of commands head over to OpenLane docs [here](https://openlane.readthedocs.io/en/latest/reference/openlane_commands.html#floorplan-commands)
+
+
+
+we initiate the Floorplan in OpenLane using the command 
+```
+run_floorplan
+```
+we can see the following message on successful floorplan execution :
+
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b7f4c250-dae6-461b-80eb-2eac80027d70" alt="Image" width="900">
+</p>
+
+
+### Viewing Floorplan in Magic
+To view our floorplan in Magic we need to provide three files as input:
+
+1. Magic technology file (sky130A.tech)
+2. Def file of floorplan
+3. Merged LEF file
+
+head over to the following directory to view the results of floorplan using Magic : 
+```
+cd /Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/run_1/results/floorplan
+```
+To invoke magic use the command :
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+```
+
+Magic has the following GUI interface and a console window to execute commands
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e6c91984-7bfc-428d-934d-59c148a4b9ac" alt="Image" width="600">
+</p>
+
 
 
 
