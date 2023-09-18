@@ -995,13 +995,99 @@ This step creates pockets for NMOS and PMOS
 
 ### 9. Final STructure
 
- ![image](https://github.com/yagnavivek/PES_OpenLane_PD/assets/93475824/0e355a75-55ff-4723-96ae-4abd5845697c)
+
+<p align="center">
+  <img src="https://github.com/yagnavivek/PES_OpenLane_PD/assets/93475824/0e355a75-55ff-4723-96ae-4abd5845697c" alt="Magic Layer Details" width="600">
+</p>
 
 
 
+# Layout Designing using Magic
 
+Clone the following repository in the openlane directory to build all the dependencies:
 
+```bash
+git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+```
 
+To invoke the layout of the inverter, use the following command:
+
+```bash
+magic -T sky130A.tech sky130_inv.mag &
+```
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/9503de62-43d4-4e9e-ad4b-da7d0e7b6df2" alt="Inverter Layout" width="600">
+</p>
+
+Hover over the region for which you want more details and select the region by pressing `s`. Then type `what` in the console window to get information about the layer.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/f420408c-924d-4613-abd1-6d6a43bea99e" alt="Magic Layer Details" width="600">
+</p>
+
+For a detailed guide on designing the inverter layout from scratch, visit this [repository](https://github.com/nickson-jose/vsdstdcelldesign).
+
+## DRC Checks in Magic
+
+DRC check in Magic happens in real time. Any DRC errors are immediately reflected in the DRC icon on the toolbar.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/8fc23e9b-b4ff-4ace-9acd-685409a2cf8f" alt="DRC Checks" width="600">
+</p>
+
+Extract Parasitics in Magic:
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/58421af5-23a7-4da9-8693-88154149b25e" alt="Extract PEX" width="600">
+</p>
+
+This creates a spice deck for simulation with all the parasitics.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/d046b687-4fb0-4820-b18d-96913d6c03ef" alt="Spice Deck" width="600">
+</p>
+
+The above file has details of the inverter netlist, but the sources and their values are not specified. Modify the file as follows:
+
+- The grid size from the layout is 0.01u.
+- Specify the library for MOS.
+- Create VDD, VSS, Input pulse Va.
+- Specify the type of analysis to be done.
+
+Modified SPICE Deck:
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6d14a996-7054-45e2-bd87-a29e9432d3b4" alt="Modified Spice Deck" width="600">
+</p>
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fd7a174c-7a66-4e47-b80b-ec6fa4ec5e0f" alt="Modified Spice Deck" width="600">
+</p>
+
+To run the spice netlist simulation, use the command on the terminal:
+
+```bash
+ngspice sky130_inv.spice
+```
+
+Plot the transient analysis using:
+
+```bash
+plot y vs time a
+```
+
+Zoom in on the transient analysis at 1.65V to get timing values.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/1e11a409-2f08-4c89-bd2a-9538786427d1" alt="Transient Analysis Zoom" width="600">
+</p>
+
+Click on the desired point, and the terminal will reflect the exact x and y values.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/41100448-7c4b-488d-b7aa-62e6ebe3779b" alt="Terminal Values" width="600">
+</p>
 
 
 
