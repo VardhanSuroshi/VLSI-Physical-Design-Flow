@@ -1090,7 +1090,149 @@ Click on the desired point, and the terminal will reflect the exact x and y valu
 </p>
 
 
+The results obtained from the graph are :
+
+- Rise time: 0.0395ns
+- Fall time: 0.0282ns
+- Cell Rise delay: 0.03598ns
+- Cell fall delay: 0.0483ns
 
 
+
+
+
+
+## Sky130 Tech File Labs
+
+### Introduction to Magic Tool Options and DRC Rules
+
+Magic is a venerable VLSI layout tool, written in the 1980s at Berkeley by John Ousterhout, now famous primarily for writing the scripting interpreter language Tcl. Due largely in part to its liberal Berkeley open-source license, magic has remained popular with universities and small companies. The open-source license has allowed VLSI engineers with a bent toward programming to implement clever ideas and help magic stay abreast of fabrication technology. However, it is the well thought-out core algorithms which lend to magic the greatest part of its popularity. Magic is widely cited as being the easiest tool to use for circuit layout, even for people who ultimately rely on commercial tools for their product design flow.
+
+### DRC Section
+
+The design rules used by Magic's design rule checker come entirely from the technology file. We'll look first at two simple kinds of rules, width and spacing. Most of the rules in the DRC section are one or the other of these kinds of rules.
+
+SKY130 PDK
+SKY130 is a mature 180nm-130nm hybrid technology developed by Cypress Semiconductor that has been used for many production parts. SKY130 is now available as a foundry technology through SkyWater Technology Foundry.
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/37b78da5-b313-47a1-ae9d-6d92911cab33" alt="SKY130 PDK" width="600">
+</p>
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/04b4381b-b92f-40ed-a403-09c0be903743" alt="SKY130 PDK" width="600">
+</p>
+
+Commands to open Magic:
+
+```bash
+magic -d XR
+```
+
+Then we open the `met3.mag` file.
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/e746a4b8-cd4b-442e-8916-2bc8fdce4c9e" alt="Open met3.mag" width="600">
+</p>
+
+To check which DRC rule is being violated, select an area and type `drc why` in Tkcon.
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/be24dcd6-9893-4c5a-b2d1-5b2061b9370c" alt="DRC Error" width="600">
+</p>
+
+To add contact cuts, add `met3` contact by selecting an area and clicking on `m3contact` using the middle mouse button. Then type `cif see VIA2` in Tkcon prompt.
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/075377c5-4aa4-4583-9656-d0e87d5ab95a" alt="Adding Contact Cuts" width="400">
+</p>
+
+To fix errors:
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/25ecd4e0-a818-478b-bd23-9832bf88d536" alt="Fixing Errors" width="400">
+</p>
+
+The error is:
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/46257981-a308-4be5-b684-ddedb0defc79" alt="Error" width="400">
+</p>
+
+To fix the error, open the `sky130A.tech` file using an editor search for `poly.9` and make the changes.
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/b78688b0-689a-4f18-af77-198c087daf32" alt="Fix Error in sky130A.tech" width="400">
+</p>
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/46d73847-29cc-4171-9746-1bb51090b71c" alt="Fix Error in sky130A.tech" width="600">
+</p>
+
+Now load the `sky130A.tech` file again and type the command `drc check`.
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/5fe12345-e777-4215-9a15-c807b4d7ccae" alt="Run DRC Check" width="400">
+</p>
+
+We can see the error is fixed.
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/d843fa0a-45f0-45f8-a148-f28fc61f7dee" alt="Fixed Error" width="400">
+</p>
+
+**DRC Error as Geometrical Construct**
+
+Open the `nwell.mag` file in Magic. Select the `nwell.6` and type the commands:
+
+```bash
+cif ostyle drc
+cif see dnwell_shrink
+cif see dnwell_missing
+```
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/5df2c37d-8812-4b99-9354-75df1b87f133" alt="Geometrical Construct DRC Error" width="400">
+</p>
+
+Output:
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/a53fd631-d968-49ba-a1c2-3a839c7b2111" alt="DRC Error Output" width="400">
+</p>
+
+**To Find Missing or Incorrect Rules and Fix Them**
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/3e68f2b7-5a31-4d46-b207-a65629b9c197" alt="Fix Rules" width="400">
+</p>
+
+Error:
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/5b0b494d-4797-4da7-8340-9355e7f0a0d5" alt="Error" width="400
+
+">
+</p>
+
+To fix it, make the changes:
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/0325097c-4ff8-4461-8063-34d274c1cf48" alt="Fix Error" width="400">
+</p>
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/8cd1215a-bf4f-4fa6-910b-eaad60d19c20" alt="Fix Error" width="400">
+</p>
+
+Now load the `sky130A.tech` file and type the command `drc check` for both normal and DRC fast.
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/a843d9f6-ead2-45fc-81df-22d46b651bc4" alt="Run DRC Check" width="400">
+</p>
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/2cf31443-e887-4c36-9237-8ba889cab2fd" alt="Run DRC Fast Check" width="400">
+</p>
 
 
