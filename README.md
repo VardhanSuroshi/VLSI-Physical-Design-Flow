@@ -1361,6 +1361,17 @@ To integrate custom cells into OpenLANE effectively, follow these initial config
 </p>
 
 
+5. Run floorplan and placement to see the new custom design cell being used in the placement stage. Use the following command to run placement 
+```
+init_floorplan
+run_placement
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/45a52127-d14f-442f-9334-8d997997fb8d" alt="Layout Before Grid Info" width="600">
+</p>
+
 
 
 
