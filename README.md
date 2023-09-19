@@ -113,8 +113,9 @@ OpenLANE represents a revolutionary automated RTL to GDSII flow, integrating ess
 
 ## Why do we need a Chip?
 
-Consider the Arduino Uno, a versatile development board used for various projects. At its core lies the ATmega328P microcontroller, a crucial component. Here's why we need this chip:
+Consider the Arduino Uno, a versatile development board used for various projects. At its core lies the ATmega328P microcontroller, a crucial component. 
 
+**Here's why we need this chip:**
 The Arduino Uno is powered by the ATmega328P microcontroller. This chip serves as the brain of the board and is responsible for executing user-programmed code. It contains program memory (Flash), RAM, EEPROM, and various hardware peripherals. The microcontroller handles input, output, and data processing, making it the central processing unit (CPU) of the Arduino Uno. It operates at a clock speed of 16 MHz, ensuring precise timing for program execution.
 
 
@@ -179,12 +180,12 @@ The RTL to GDS (Register-Transfer Level to Graphic Data System) flow is a comple
 
  5. Physical Design
 - Transform the gate-level netlist into a manufacturable physical layout.
-  a. **Floorplanning**: Determine the chip's area and organize the placement of major components.
-  b. **Placement**: Assign specific gate and flip-flop locations, optimizing for metrics like wire length and performance.
-  c. **Clock Tree Synthesis (CTS)**: Create a clock distribution network to ensure uniform clock signals with minimal skew.
-  d. **Routing**: Establish physical interconnections using metal and polysilicon layers. Includes global and detailed routing.
-  e. **Physical Verification**: Check layout against design rules, including timing, power, signal, and rule violations.
- 6. GDS Generation
+ + a. **Floorplanning**: Determine the chip's area and organize the placement of major components.
+ + b. **Placement**: Assign specific gate and flip-flop locations, optimizing for metrics like wire length and performance.
+ + c. **Clock Tree Synthesis (CTS)**: Create a clock distribution network to ensure uniform clock signals with minimal skew.
+ + d. **Routing**: Establish physical interconnections using metal and polysilicon layers. Includes global and detailed routing.
+ + e. **Physical Verification**: Check layout against design rules, including timing, power, signal, and rule violations.
+  6. GDS Generation
 - Generate the GDS (Graphic Data System) file.
 - This binary file format represents the complete chip layout, including geometric details and interconnections.
 
@@ -297,26 +298,11 @@ OpenLane flow consists of several stages. By default, all flow steps are run in 
 - **KLayout**: Performs DRC Checks.
 - **Netgen**: Performs LVS Checks.
 - **CVC**: Performs Circuit Validity Checks.
-  
----
 
-OpenLane integrated several key open-source tools over the execution stages:
-
-- **RTL Synthesis, Technology Mapping, and Formal Verification**: yosys + abc
-- **Static Timing Analysis**: OpenSTA
-- **Floor Planning**: init_fp, ioPlacer, pdn, and tapcell
-- **Placement**: RePLace (Global), Resizer, OpenPhySyn (formerly), and OpenDP (Detailed)
-- **Clock Tree Synthesis**: TritonCTS
-- **Fill Insertion**: OpenDP/filler_placement
-- **Routing**: FastRoute or CU-GR (formerly) and TritonRoute (Detailed) or DR-CU
-- **SPEF Extraction**: OpenRCX or SPEF-Extractor (formerly)
-- **GDSII Streaming out**: Magic and KLayout
-- **DRC Checks**: Magic and KLayout
-- **LVS check**: Netgen
-- **Antenna Checks**: Magic
-- **Circuit Validity Checker**: CVC
 Everything in Floorplanning through Routing is done using **OpenROAD** and its various sub-utilities.
+
 ---
+
 **OpenLane Output**
 
 All output run data is placed by default under `./designs/design_name/runs`. Each flow cycle will output a timestamp-marked folder containing the following file structure:
@@ -479,7 +465,7 @@ After running the ```prep``` command, you'll find a well-structured project dire
 
 
 
-### Synthesis 
+## Synthesis 
 
 
 To access the reports generated during the synthesis step in OpenLane, navigate to the following directory: ```runs/workshop/report```
@@ -672,18 +658,18 @@ In this phase, components from the netlist are placed within the chip's core are
 
 ### 3. Final Placement Optimization
 
-The final placement phase fine-tunes component layout within the chip, optimizing for performance. It assumes an ideal clock and aims to minimize signal delays, conserve power, and meet design constraints.
+The final placement phase fine-tunes the component layout within the chip, optimizing for performance. It assumes an ideal clock and aims to minimize signal delays, conserve power, and meet design constraints.
 
 
 
 ---
 
-The next step in the Digital ASIC design flow after floorplanning is placement. The synthesized netlist has been mapped to standard cells and floorplanning phase has determined the standard cells rows, enabling placement. OpenLane does placement in two stages:
+The next step in the Digital ASIC design flow after floorplanning is placement. The synthesized netlist has been mapped to standard cells and the floorplanning phase has determined the standard cells rows, enabling placement. OpenLane does placement in two stages:
 
 1. **Global Placement** - Optimized but not legal placement. Optimization works to reduce wirelength by reducing half parameter wirelength
 2. **Detailed Placement** - Legalizes placement of cells into standard cell rows while adhering to global placement
 
-To do placement in OpenLane:
+To do a placement in OpenLane:
 ```
 run_placement
 ```
@@ -692,7 +678,7 @@ For placement to converge the overflow value needs to be converging to 0. At the
 
 
 ### Viewing Placement in Magic
-To view placement in Magic the command mirrors viewing floorplanning, go to results/floorplan directory and use command:
+To view placement in Magic the command mirrors viewing floorplanning, go to the results/floorplan directory and use the command:
 ```
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 ```
@@ -703,7 +689,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 
 
-zoomed view of the core with all the standard cells place in between power can ground rail 
+zoomed view of the core with all the standard cells placed in between power can ground rail 
 
 <p align="center">
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/34d18189-7cf7-4ad6-a0d7-d705e19d5b4d" alt="Image" width="600">
@@ -716,7 +702,7 @@ zoomed view of the core with all the standard cells place in between power can g
 
 
 
-## Standard Cell Design and Characterisation :
+## Standard Cell Design and Characterization :
 
 
 
@@ -960,7 +946,7 @@ Vin in 0 0 pulse 0 2.5 0 10p 10p 1n 2n   ; Voltage source Vin with a pulse wavef
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/aebccb6b-a705-42a4-b23a-c1a4772d5969" alt="Threshold Variation" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/aebccb6b-a705-42a4-b23a-c1a4772d5969" alt="Threshold Variation" width="400">
 </p>
 
 
@@ -988,7 +974,7 @@ This step creates pockets for NMOS and PMOS
 ### 3.NWel and PWel formation
 
 - Apply photoresist, apply a mask that covers NMOS
-- Expose to UV, Wash, remove the mask, apply boron(p-type) using Ion Implantation at an energy of 200Kev(for diffusion)
+- Expose to UV, Wash, remove the mask, and apply boron(p-type) using Ion Implantation at an energy of 200 Kev(for diffusion)
 - repeat it for the other half using phosphorous @400Kev because phosphorous is heavier
 - Wells have been created but the depth is low. Therefore subject it to high high-temperature furnace which increases the well depth.
 
@@ -1038,14 +1024,9 @@ This step creates pockets for NMOS and PMOS
 </p>
 
 
-
-Certainly, I've reformatted the content and fixed the image links as requested:
-
 # Introduction to Magic Tool Options and DRC Rules
 
-Magic is a venerable VLSI layout tool, written in the 1980s at Berkeley by John Ousterhout, now famous primarily for writing the scripting interpreter language Tcl. Due largely in part to its liberal Berkeley open-source license, magic has remained popular with universities and small companies. The open-source license has allowed VLSI engineers with a bent toward programming to implement clever ideas and help magic stay abreast of fabrication technology. However, it is the well-thought-out core algorithms that lend to magic the greatest part of its popularity. Magic is widely cited as being the easiest tool to use for circuit layout, even for people who ultimately rely on commercial tools for their product design flow. Magic version 8.3 is the official current released version of the program, a combined effort of the "Magic Development Team".
-
-Development efforts have moved to git branches. For development information, please refer to the release note.
+Magic is a venerable VLSI layout tool, written in the 1980s at Berkeley by John Ousterhout, now famous primarily for writing the scripting interpreter language Tcl. Due largely in part to its liberal Berkeley open-source license, magic has remained popular with universities and small companies. The open-source license has allowed VLSI engineers with a bent toward programming to implement clever ideas and help magic stay abreast of fabrication technology. However, it is the well-thought-out core algorithms that lend to magic the greatest part of its popularity. Magic is widely cited as being the easiest tool to use for circuit layout, even for people who ultimately rely on commercial tools for their product design flow.
 
 <p align="center">
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b4014bc5-6fda-4aaf-95a4-931bf593532d" alt="Magic Tool" width="600">
@@ -1274,11 +1255,11 @@ By aligning with these guidelines, you can ensure that your standard cells are c
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/blob/assets/132068498/4b01c209-f2f4-451c-8e0b-f490ee9745c9" alt="Layout Before Grid Info" width="300">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/4b01c209-f2f4-451c-8e0b-f490ee9745c9" alt="Layout Before Grid Info" width="300">
 </p>
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/blob/assets/132068498/a8ce6b53-9df1-4700-8cfc-ad8d210db9fa" alt="Layout Before Grid Info" width="300">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a8ce6b53-9df1-4700-8cfc-ad8d210db9fa" alt="Layout Before Grid Info" width="300">
 </p>
 
 **After Setting Grid Info:**
@@ -1294,9 +1275,7 @@ By reviewing the layout, you can confirm that pins A and Y are appropriately pla
 These guidelines are crucial for a seamless and effective place and route process, ultimately contributing to the successful design of integrated circuits.
 
 
-### LEF Generation
-
-# LEF File Generation from Modified Layout
+## LEF File Generation from Modified Layout
 
 Once you have perfected your layout with the specified grid settings, you can proceed to generate the LEF (Library Exchange Format) file. Here are the steps to save your modified layout and extract the LEF file:
 
@@ -1342,7 +1321,7 @@ Following these steps will result in the creation of an LEF file that encapsulat
 
 
 
-# Including Custom Cells in OpenLANE
+## Including Custom Cells in OpenLANE
 
 To integrate custom cells into OpenLANE effectively, follow these initial configuration steps:
 
