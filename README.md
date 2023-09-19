@@ -19,6 +19,7 @@ OpenLANE represents a revolutionary automated RTL to GDSII flow, integrating ess
 
 
 ---
+
 # Table of Contents
 
 1. [About the Project](#about-the-project)
@@ -27,13 +28,49 @@ OpenLANE represents a revolutionary automated RTL to GDSII flow, integrating ess
    + [Components of a Chip](#components-of-a-chip)
    + [Key Components Needed for ASIC Development](#key-components-needed-for-asic-development)
    + [Why Open-Source Tools for ASIC Development?](#why-open-source-tools-for-asic-development)
-   + 
 
 4. [Overview of RTL to GDS Flow](#overview-of-rtl-to-gds-flow)
 5. [About OpenLane](#about-openlane)
    + [OpenLane Integrated Tools](#openlane-integrated-tools)
    + [OpenLane Output](#openlane-output)
 6. [DAY 1: OpenLane and SKYWATER-130](#day-1-openlane-and-skywater-130)
+   + [Setting Up OpenLane](#setting-up-openlane)
+   + [Synthesis](#synthesis)
+
+7. [Day 2: Floorplanning](#day-2-floorplanning)
+   + [Floorplan using OpenLane](#floorplan-using-openlane)
+   + [Viewing Floorplan in Magic](#viewing-floorplan-in-magic)
+
+   + [Placement in Chip Design](#placement-in-chip-design)
+   + [Viewing Placement in Magic](#viewing-placement-in-magic)
+
+   + [Standard Cell Design and Characterization](#standard-cell-design-and-characterization)
+   + [Cell Design Flow](#cell-design-flow)
+   + [Design Steps](#design-steps)
+   + [Characterization Flow](#characterization-flow)
+
+8. [Day 3: Design of Cell Library](#day-3-design-of-cell-library)
+   + [SPICE Deck Creation & Simulation](#spice-deck-creation-and-simulation)
+   + [SPICE Simulation Using Ngspice](#spice-simulation-using-ngspice)
+   + [SPICE Deck for Transient Analysis](#spice-deck-for-transient-analysis)
+   + [Fabrication Process for a CMOS Inverter](#fabrication-process-for-a-cmos-inverter)
+   + [Final Structure](#final-structure)
+   + [Introduction to Magic Tool Options and DRC Rules](#introduction-to-magic-tool-options-and-drc-rules)
+   + [SkyWater SKY130 PDK](#skywater-sky130-pdk)
+   + [Layout Designing using Magic](#layout-designing-using-magic)
+
+9. [DAY 4: LEF Extraction and Standard Cell Guidelines](#day-4-lef-extraction-and-standard-cell-guidelines)
+   + [LEF Extraction and Standard Cell Guidelines](#lef-extraction-and-standard-cell-guidelines)
+   + [Including Custom Cells in OpenLANE](#including-custom-cells-in-openlane)
+   + [Optimizing Timing Constraints in VLSI Design](#optimizing-timing-constraints-in-vlsi-design)
+   + [Clock Tree Synthesis (CTS) and Post-CTS STA Analysis](#clock-tree-synthesis-cts-and-post-cts-sta-analysis)
+   + [Fine-Tuning Post CTS-STA Analysis](#fine-tuning-post-cts-sta-analysis)
+
+10. [Day 5: Power Distribution Network, Routing, and SPEF Extraction](#day-5-power-distribution-network-routing-and-spef-extraction)
+   + [Power Distribution Network (PDN) Generation](#power-distribution-network-pdn-generation)
+   + [Routing in Two Stages](#routing-in-two-stages)
+   + [Initiating Routing with OpenLANE](#initiating-routing-with-openlane)
+   + [SPEF Extraction for Parasitic Information](#spef-extraction-for-parasitic-information)
 
 
 
