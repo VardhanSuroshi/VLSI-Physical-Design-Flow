@@ -1221,8 +1221,10 @@ To ensure proper functionality and compatibility with the PnR tool, it's crucial
    In this file, the first value indicates the offset, and the second value indicates the pitch along the provided direction. This information is used to set the grid for standard cells.
 
    
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fc38350f-d74b-49d0-8f94-f1d03bf469a4)
 
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fc38350f-d74b-49d0-8f94-f1d03bf469a4" alt="Grid Information for Standard Cells" width="600">
+</p>
 
 
 
@@ -1230,19 +1232,93 @@ By aligning with these guidelines, you can ensure that your standard cells are c
 
 **Before Setting Grid Info:**
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/4b01c209-f2f4-451c-8e0b-f490ee9745c9)
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a8ce6b53-9df1-4700-8cfc-ad8d210db9fa)
 
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/blob/assets/132068498/4b01c209-f2f4-451c-8e0b-f490ee9745c9" alt="Layout Before Grid Info" width="300">
+</p>
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/blob/assets/132068498/a8ce6b53-9df1-4700-8cfc-ad8d210db9fa" alt="Layout Before Grid Info" width="300">
+</p>
 
 **After Setting Grid Info:**
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/74b603e6-e282-4419-851c-7537adfd308b)
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/74b603e6-e282-4419-851c-7537adfd308b" alt="Layout after Grid Info" width="400">
+</p>
 
 
 By reviewing the layout, you can confirm that pins A and Y are appropriately placed at the intersection of X and Y tracks, meeting the first condition. Additionally, the PR boundary adheres to a width of 3 grids and a height of 9 grids, satisfying the second condition.
 
 These guidelines are crucial for a seamless and effective place and route process, ultimately contributing to the successful design of integrated circuits.
+
+
+### LEF Generation
+
+# LEF File Generation from Modified Layout
+
+Once you have perfected your layout with the specified grid settings, you can proceed to generate the LEF (Library Exchange Format) file. Here are the steps to save your modified layout and extract the LEF file:
+
+1. **Save the Modified Layout**:
+   In the console, type the following command to save the modified layout, which includes the new grid settings:
+   ```
+   save sky130_vsdinv.mag
+   ```
+   This command saves the modified layout in the current working directory.
+
+2. **Open the File and Extract LEF**:
+   Next, you need to open the saved layout file and extract the LEF information. Use the following command to open the file with the specified technology file:
+   ```
+   magic -T sky130A.tech sky130_vsdinv.mag
+   ```
+   Once you have the layout open, access the console within Magic.
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/eb6de418-9f1a-4a5b-b1e6-645d1da78690" alt="Layout Before Grid Info" width="600">
+</p>
+
+
+
+
+4. **Generate LEF**:
+   Inside the console window, type the following command to generate the LEF file:
+   ```
+   lef write
+   ```
+   This command instructs Magic to write the layout information into an LEF file.
+
+Following these steps will result in the creation of an LEF file that encapsulates the layout details of your design. This LEF file can then be used for various design and integration purposes in the overall chip design process.
+
+
+
+
+
+
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ea59bcbd-f45f-4c99-bec5-b9411a42aec9" alt="Layout Before Grid Info" width="600">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
