@@ -1297,12 +1297,6 @@ Following these steps will result in the creation of an LEF file that encapsulat
 
 
 
-
-
-
-
-
-
 <p align="center">
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ea59bcbd-f45f-4c99-bec5-b9411a42aec9" alt="Layout Before Grid Info" width="600">
 </p>
@@ -1311,12 +1305,210 @@ Following these steps will result in the creation of an LEF file that encapsulat
 
 
 
+# Including Custom Cells in OpenLANE
+
+To integrate custom cells into OpenLANE effectively, follow these initial configuration steps:
+
+1. **Characterize New Cell with GUNA:** Ensure your custom cell is fully characterized using GUNA for specified process corners.
+
+2. **Include Cell-Level Liberty File:** Add the cell-level Liberty (`.lib`) file of the custom cell to the top-level Liberty file. This provides timing and functional data to OpenLANE.
+
+3. **Reconfigure Synthesis Switches:** Modify the synthesis switches in `config.tcl` to make OpenLANE aware of the custom cell during synthesis and optimization.
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fd1ff26b-bf96-4922-a559-1744989ca9cf" alt="Layout Before Grid Info" width="600">
+</p>
+
+  
+
+4. **Overwrite Previous Run:** When running OpenLANE for the project, overwrite any previous runs with the new configuration switches to include the custom cell.
+
+   ```./flow.tcl -design picorv32a -tag run_8 -overwrite```
+
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/984fb159-dbf4-445f-b876-b3681fcf8612" alt="Layout Before Grid Info" width="600">
+</p>
+
+
+5. **Check Synthesis Logs:** Review synthesis logs to confirm the successful integration of the custom cell. Address any errors or warnings related to the cell's usage.
+
+
+
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/3afd50f7-ec48-4f5b-93ad-182af0d8adf3" alt="Layout Before Grid Info" width="600">
+</p>
+
+
+
+
+
+# Optimizing Timing Constraints in VLSI Design
+
+Timing constraints are paramount in VLSI design, and minimizing slack violations is critical to ensure the reliable operation of circuits. Slack violations, typically detected during static timing analysis (STA), manifest as issues like worst negative slack (WNS) and total negative slack (TNS). Let's delve into strategies for effectively managing and reducing slack violations using tools like OpenLANE and OpenSTA:
+
+## Understanding the Challenge
+
+In VLSI design, timing constraints are pivotal to meet performance requirements. Slack violations, such as WNS and TNS, signify that certain paths in the circuit are not meeting their timing criteria. Addressing these issues is essential for ensuring correct circuit operation.
+
+## Strategies for Slack Reduction
+
+To tackle slack violations, consider the following strategies:
+
+### 1. Synthesis Strategy Review
+
+Begin by examining your synthesis strategy in OpenLANE. Optimize it to enhance timing performance. Options like enabling `CELL_SIZING` and configuring `SYNTH_STRATEGY` with parameters like "DELAY 1" can be beneficial in alleviating slack issues.
+
+### 2. Fanout Load Adjustment
+
+High delay paths due to excessive fanout can be optimized by revisiting the synthesis process. Modify parameters such as `SYNTH_MAX_FANOUT` to fine-tune the fanout load. This can lead to significant reductions in slack violations.
+
+### 3. Cell Buffering
+
+Enhance signal drive strength by enabling cell buffering within your design. This approach boosts the performance of critical paths and reduces signal delays.
+
+### 4. Manual Cell Replacement
+
+For in-depth slack reduction, consider manual cell replacement using the OpenSTA tool. Identify nets that are driving numerous outputs and replace the driver cells with larger versions of the same type. This manual optimization can yield substantial improvements in slack.
+
+### 5. Fanout Optimization
+
+Leverage OpenLANE's built-in tools to optimize fanout values across your design. Adjusting fanout settings can help balance signal loads, mitigating delays, and improving overall timing performance.
+
+
+
+
+# Clock Tree Synthesis (CTS) and Post-CTS STA Analysis
+
+In the realm of VLSI design, the intricacies of clock tree synthesis (CTS) and the subsequent static timing analysis (STA) play pivotal roles in ensuring precise circuit performance. Let's delve into how OpenLANE manages these critical processes.
+
+## Clock Tree Synthesis (CTS)
+
+### Addressing Key Concerns
+After running the floorplan and standard cell placement in OpenLANE, the next crucial step is to introduce the clock tree for sequential elements within the design. Two primary concerns when generating the clock tree are:
+
+1. **Clock Skew**: This refers to the difference in arrival times of the clock signal for sequential elements across the entire design.
+
+2. **Delta Delay**: It represents the skew introduced through capacitive coupling of the clock tree nets.
+
+### Executing CTS in OpenLANE
+To perform clock tree synthesis in OpenLANE, follow these steps:
+
+**Note:** CTS will introduce buffers throughout the clock tree, which will modify our netlist.
+
+## Viewing Post-CTS Netlist
+OpenLANE generates a new .def file containing information about your design after CTS is performed. To view this netlist, use the Magic tool:
+
+## Post-CTS STA Analysis
+OpenLANE integrates the OpenROAD application, which includes OpenSTA for timing analysis. You can perform STA analysis seamlessly from within OpenLANE by invoking OpenROAD. Here's how:
+
+1. In OpenROAD, timing analysis involves creating a .db database file. This file is generated using the post-CTS LEF and DEF files. To generate the .db files within OpenROAD:
+
+**Note:** Whenever the DEF file changes, recreate the .db file.
+
+2. After .db generation, users can configure tools and then report propagated clock timing analysis.
+
+## Enhancing the Process
+After addressing slack violations in the initial synthesis phase, OpenLANE generates a mapped.v file in the synthesis results. However, to maintain consistency with the resolved violations from the pre_sta.conf file, you can write this netlist using `write_verilog` and replace the openlane-generated mapped file (e.g., picorv32a.synthesis.v).
+
+Proceeding with the OpenLANE flow, continue with the following stages:
+- run_floorplan
+- run_placement
+- run_cts
+
+**Note:** The CTS step should have added buffers and modified the netlist.
+
+## Fine-Tuning Post CTS-STA Analysis
+OpenLANE seamlessly integrates the OpenROAD application, which, in turn, includes OpenSTA for timing analysis. To perform STA analysis within OpenLANE, invoke OpenROAD and follow these steps:
+
+1. Create a .db database file within OpenROAD:
+   - Read the LEF file from the tmp folder of runs.
+   - Read the DEF file from the results of CTS.
+   - Write the .db file.
+
+2. Read the generated .db file.
+
+3. Read the CTS-generated Verilog file.
+
+4. Read the min and max liberty files.
+
+5. Set the clocks.
+
+6. Generate the necessary reports.
+
+**Note:** The results may not meet the timing due to the usage of min and max liberty files, as OpenROAD does not support multi-corner optimization. Consider using only typical corner libraries.
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+# Day 5: Power Distribution Network, Routing, and SPEF Extraction
+
+In the world of VLSI design, establishing an efficient Power Delivery Network (PDN) and optimizing routing are pivotal steps. OpenLANE provides solutions for managing these processes effectively.
+
+## Power Distribution Network (PDN) Generation
+
+The PDN acts as a network of traces and components responsible for distributing power (VDD) effectively and reliably across the integrated circuit (IC). OpenLANE simplifies this process with the following components:
+
+- **Power Ring Global**: This is a continuous metal ring encircling the entire IC core, ensuring uniform distribution of power to the core logic and functional blocks. It minimizes voltage drops, guaranteeing power supply to all core regions.
+
+- **Power Halo Local**: The power halo forms a localized power distribution network around specific preplaced cells or macroblocks. Preplaced cells remain in fixed positions, and the power halo ensures they receive the necessary power connections.
+
+- **Power Straps**: These are metal traces or structures that transport power from the chip's periphery to central regions, reducing the distance power must travel. Power straps maintain consistent power distribution across the entire chip.
+
+- **Power Rails**: Metal lines run vertically or horizontally across the chip, supplying power to standard cells. Power rails ensure that each standard cell receives the required power for proper operation.
+
+## Routing in Two Stages
+
+Routing within OpenLANE is a two-stage process:
+
+1. **Global Routing**: During global routing, routing guides are generated for interconnects on the netlist. These guides define the layers to use and specify where each net will be located on the chip.
+
+2. **Detailed Routing**: In the detailed routing stage, metal traces are meticulously placed across the routing guides to physically implement the interconnects.
+
+## Initiating Routing with OpenLANE
+
+To kickstart the routing process within OpenLANE, simply use the command `run_routing`.
+
+## SPEF Extraction for Parasitic Information
+
+In the semiconductor industry, the Standard Parasitic Exchange Format (SPEF) is a vital file format used to represent parasitic information such as resistance and capacitance. Accurate modeling and extraction of these parasitics are critical for optimizing electronic devices in VLSI design.
+
+To perform SPEF extraction:
+
+1. Navigate to the SPEF Extractor directory using the following command:
+   ```
+   cd Desktop/work/tools/SPEF_Extractor
+   ```
+
+2. Execute the SPEF extraction command, providing paths to the LEF and DEF files:
+   ```
+   python3 /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/18-09_06-26/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/18-09_06-26/results/routing/picorv32a.def
+   ```
+
+The resulting SPEF file can be found in the directory:
+```
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/18-09_06-26/results/routing/
+```
+
+By following these steps, you ensure precise modeling and extraction of parasitic elements, a crucial aspect of optimizing electronic devices in VLSI design.
 
 
 
