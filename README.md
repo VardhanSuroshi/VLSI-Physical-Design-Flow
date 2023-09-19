@@ -993,12 +993,102 @@ This step creates pockets for NMOS and PMOS
 - This can be done using Al, W, and TiN layer depositions.
 - Deposit a layer of Si3N4 that acts as a dielectric to protect the chip.
 
-### 9. Final STructure
+### 9. Final Structure
 
 
 <p align="center">
   <img src="https://github.com/yagnavivek/PES_OpenLane_PD/assets/93475824/0e355a75-55ff-4723-96ae-4abd5845697c" alt="Magic Layer Details" width="600">
 </p>
+
+
+
+Certainly, I've reformatted the content and fixed the image links as requested:
+
+# Introduction to Magic Tool Options and DRC Rules
+
+Magic is a venerable VLSI layout tool, written in the 1980s at Berkeley by John Ousterhout, now famous primarily for writing the scripting interpreter language Tcl. Due largely in part to its liberal Berkeley open-source license, magic has remained popular with universities and small companies. The open-source license has allowed VLSI engineers with a bent toward programming to implement clever ideas and help magic stay abreast of fabrication technology. However, it is the well-thought-out core algorithms that lend to magic the greatest part of its popularity. Magic is widely cited as being the easiest tool to use for circuit layout, even for people who ultimately rely on commercial tools for their product design flow. Magic version 8.3 is the official current released version of the program, a combined effort of the "Magic Development Team".
+
+Development efforts have moved to git branches. For development information, please refer to the release note.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b4014bc5-6fda-4aaf-95a4-931bf593532d" alt="Magic Tool" width="600">
+</p>
+
+Download the files required for this lab from:
+
+```
+https://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+```
+
+### SkyWater SKY130 PDK
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6614932a-f877-4a13-8d78-385b375e8a6c" alt="SKY130 PDK" width="600">
+</p>
+
+SKY130 is a mature 180nm-130nm hybrid technology developed by Cypress Semiconductor that has been used for many production parts. SKY130 is now available as a foundry technology through SkyWater Technology Foundry.
+
+The technology is the 8th generation SONOS technology node (130nm).
+
+The technology stack consists of:
+
+- 5 levels of metal (p - penta)
+- Inductor or Inductor-Capable (i)
+- Poly resistor (r)
+- SONOS shrunken cell (s)
+- Supports 10V regulated supply (10R)
+
+Details about SKY130 PDK can be found [here](https://skywater-pdk.readthedocs.io/en/main/).
+
+Every design rule has a code that can be used to refer to the documentation.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/1da2d70a-b8be-4bf0-a4d2-ad33ff0d946d" alt="Design Rule Codes" width="600">
+</p>
+
+Select a particular layer (hover over the layer and click S) and type `drc why` to know what the DRC violation is.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/855b1956-97f7-4739-9ca5-6e97a4250d49" alt="DRC Violation" width="600">
+</p>
+
+To add contact cuts, add `met3` contact by selecting an area and clicking on `m3contact` using the middle mouse button. Then type `cif see VIA2` in Tkcon prompt.
+
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/1e30f00d-bf5e-4545-92a1-c009e364fe6f" alt="Adding Contact Cuts" width="600">
+</p>
+
+
+Magic techfile is under development and there may be some DRC violations that might not get reflected such violations are marked under incomplete DRC rules. Let's look at an example of a DRC violation and try correcting the rule file to capture the DRC error. Here is a violation 
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/25ecd4e0-a818-478b-bd23-9832bf88d536" alt="Fixing Errors" width="400">
+</p>
+
+here is the description of the violation from the sky130 water PDK documentation under DRC rules : 
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/46257981-a308-4be5-b684-ddedb0defc79" alt="Error" width="900">
+</p>
+
+
+
+To fix the error, open the `sky130A.tech` file using an editor search for `poly.9` and make the changes.
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/b78688b0-689a-4f18-af77-198c087daf32" alt="Fix Error in sky130A.tech" width="900">
+</p>
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/46d73847-29cc-4171-9746-1bb51090b71c" alt="Fix Error in sky130A.tech" width="900">
+</p>
+
+Now load the `sky130A.tech` file again and type the command `drc check` to reflect the changes made in the tech file. Post-editing the DRC violation will highlight the error
+
+<p align="center">
+  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/5fe12345-e777-4215-9a15-c807b4d7ccae" alt="Run DRC Check" width="900">
+</p>
+
+
 
 
 
@@ -1100,139 +1190,61 @@ The results obtained from the graph are :
 
 
 
+# DAY 4: 
 
 
-## Sky130 Tech File Labs
 
-### Introduction to Magic Tool Options and DRC Rules
+# LEF Extraction and Standard Cell Guidelines
 
-Magic is a venerable VLSI layout tool, written in the 1980s at Berkeley by John Ousterhout, now famous primarily for writing the scripting interpreter language Tcl. Due largely in part to its liberal Berkeley open-source license, magic has remained popular with universities and small companies. The open-source license has allowed VLSI engineers with a bent toward programming to implement clever ideas and help magic stay abreast of fabrication technology. However, it is the well thought-out core algorithms which lend to magic the greatest part of its popularity. Magic is widely cited as being the easiest tool to use for circuit layout, even for people who ultimately rely on commercial tools for their product design flow.
+During the place and route (PnR) process, an abstract view of the GDS files generated by Magic is used. This abstract view contains crucial information such as metal and pin details. This information is formally defined as LEF (Library Exchange Format) and is utilized by the PnR tool for interconnect routing, in conjunction with routing guides generated during the PnR flow.
 
-### DRC Section
+There are two main types of LEF files that are essential for the PnR process:
 
-The design rules used by Magic's design rule checker come entirely from the technology file. We'll look first at two simple kinds of rules, width and spacing. Most of the rules in the DRC section are one or the other of these kinds of rules.
+1. **Technology LEF**: This file contains information about layers, vias, and restricted Design Rule Check (DRC) rules. It specifies the characteristics of the fabrication process.
 
-SKY130 PDK
-SKY130 is a mature 180nm-130nm hybrid technology developed by Cypress Semiconductor that has been used for many production parts. SKY130 is now available as a foundry technology through SkyWater Technology Foundry.
+2. **Cell LEF**: This file provides an abstract representation of standard cells used in the design. It includes pin information and other essential details.
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/37b78da5-b313-47a1-ae9d-6d92911cab33" alt="SKY130 PDK" width="600">
-</p>
+### Guidelines for Creating Standard Cell Sets
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/04b4381b-b92f-40ed-a403-09c0be903743" alt="SKY130 PDK" width="600">
-</p>
+To ensure proper functionality and compatibility with the PnR tool, it's crucial to follow specific guidelines when creating standard cell sets:
 
-Commands to open Magic:
+1. **Port Placement**: Input and output ports of standard cells must align with the intersection of vertical and horizontal tracks. This alignment ensures that signals can be routed efficiently.
 
-```bash
-magic -d XR
-```
+2. **Cell Dimensions**: Standard cell width should be an odd multiple of the track pitch, and the height should be an odd multiple of the vertical track pitch. This adherence to odd multiples helps in grid alignment.
 
-Then we open the `met3.mag` file.
+3. **Track Information**: Track information can be found in the `tracks.info` file, typically located at:
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/e746a4b8-cd4b-442e-8916-2bc8fdce4c9e" alt="Open met3.mag" width="600">
-</p>
+   ```
+   ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/openlane/sky130fd_sc_hd/tracks.info
+   ```
 
-To check which DRC rule is being violated, select an area and type `drc why` in Tkcon.
+   In this file, the first value indicates the offset, and the second value indicates the pitch along the provided direction. This information is used to set the grid for standard cells.
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/be24dcd6-9893-4c5a-b2d1-5b2061b9370c" alt="DRC Error" width="600">
-</p>
+   
+![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fc38350f-d74b-49d0-8f94-f1d03bf469a4)
 
-To add contact cuts, add `met3` contact by selecting an area and clicking on `m3contact` using the middle mouse button. Then type `cif see VIA2` in Tkcon prompt.
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/075377c5-4aa4-4583-9656-d0e87d5ab95a" alt="Adding Contact Cuts" width="400">
-</p>
 
-To fix errors:
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/25ecd4e0-a818-478b-bd23-9832bf88d536" alt="Fixing Errors" width="400">
-</p>
+By aligning with these guidelines, you can ensure that your standard cells are compatible with the PnR process. This compatibility allows for efficient routing and successful integration into the overall chip design.
 
-The error is:
+**Before Setting Grid Info:**
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/46257981-a308-4be5-b684-ddedb0defc79" alt="Error" width="400">
-</p>
+![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/4b01c209-f2f4-451c-8e0b-f490ee9745c9)
 
-To fix the error, open the `sky130A.tech` file using an editor search for `poly.9` and make the changes.
+![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a8ce6b53-9df1-4700-8cfc-ad8d210db9fa)
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/b78688b0-689a-4f18-af77-198c087daf32" alt="Fix Error in sky130A.tech" width="400">
-</p>
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/46d73847-29cc-4171-9746-1bb51090b71c" alt="Fix Error in sky130A.tech" width="600">
-</p>
+**After Setting Grid Info:**
 
-Now load the `sky130A.tech` file again and type the command `drc check`.
+![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/74b603e6-e282-4419-851c-7537adfd308b)
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/5fe12345-e777-4215-9a15-c807b4d7ccae" alt="Run DRC Check" width="400">
-</p>
 
-We can see the error is fixed.
+By reviewing the layout, you can confirm that pins A and Y are appropriately placed at the intersection of X and Y tracks, meeting the first condition. Additionally, the PR boundary adheres to a width of 3 grids and a height of 9 grids, satisfying the second condition.
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/d843fa0a-45f0-45f8-a148-f28fc61f7dee" alt="Fixed Error" width="400">
-</p>
+These guidelines are crucial for a seamless and effective place and route process, ultimately contributing to the successful design of integrated circuits.
 
-**DRC Error as Geometrical Construct**
 
-Open the `nwell.mag` file in Magic. Select the `nwell.6` and type the commands:
 
-```bash
-cif ostyle drc
-cif see dnwell_shrink
-cif see dnwell_missing
-```
-
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/5df2c37d-8812-4b99-9354-75df1b87f133" alt="Geometrical Construct DRC Error" width="400">
-</p>
-
-Output:
-
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/a53fd631-d968-49ba-a1c2-3a839c7b2111" alt="DRC Error Output" width="400">
-</p>
-
-**To Find Missing or Incorrect Rules and Fix Them**
-
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/3e68f2b7-5a31-4d46-b207-a65629b9c197" alt="Fix Rules" width="400">
-</p>
-
-Error:
-
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/5b0b494d-4797-4da7-8340-9355e7f0a0d5" alt="Error" width="400
-
-">
-</p>
-
-To fix it, make the changes:
-
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/0325097c-4ff8-4461-8063-34d274c1cf48" alt="Fix Error" width="400">
-</p>
-
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/8cd1215a-bf4f-4fa6-910b-eaad60d19c20" alt="Fix Error" width="400">
-</p>
-
-Now load the `sky130A.tech` file and type the command `drc check` for both normal and DRC fast.
-
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/a843d9f6-ead2-45fc-81df-22d46b651bc4" alt="Run DRC Check" width="400">
-</p>
-
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/2cf31443-e887-4c36-9237-8ba889cab2fd" alt="Run DRC Fast Check" width="400">
-</p>
 
 
