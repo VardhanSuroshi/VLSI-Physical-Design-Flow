@@ -121,7 +121,7 @@ The Arduino Uno is powered by the ATmega328P microcontroller. This chip serves a
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/c49db320-68d1-4d28-8f9b-28e8e6866ffc" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/da81964a-d5ac-4f31-9eae-54fc3f576e27" alt="Image" width="600">
 </p>
 
 
@@ -131,7 +131,7 @@ The Arduino Uno is powered by the ATmega328P microcontroller. This chip serves a
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/55fc637c-2bb4-4f3f-891d-5d252fded3da" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6ba1cfa6-3699-4f46-bf00-a5f4847d4f65" alt="Image" width="600">
 </p>
 
 
@@ -156,8 +156,9 @@ A chip comprises several key components:
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/cd68124d-2274-4a3f-8ae3-6e868245f64f" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/00807a07-2fb8-46fe-bd59-eadfee38f3c3" alt="Image" width="600">
 </p>
+
 
 
 The RTL to GDS (Register-Transfer Level to Graphic Data System) flow is a complex process that transforms a high-level chip design into a physical layout ready for manufacturing. Here are the key steps involved:
@@ -343,8 +344,9 @@ The Skywater PDK files we are working with are described under ```pdks```
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e5ad6085-ab88-42a8-9da5-e378b0f8d73b" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/834aba7d-81b5-4d75-be5a-112f020e4c63" alt="Image" width="900">
 </p>
+
 
 
 
@@ -375,7 +377,7 @@ In each design hierarchy, you will find two distinct components:
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/2a114436-5f3c-467d-8644-27ac0f955faf" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/227a37f0-b296-4e58-a0dd-26e10cde408b" alt="Image" width="900">
 </p>
 
 
@@ -419,7 +421,7 @@ package require openlane 0.9
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/03f058c6-071a-4d14-94fb-214a39747cec" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e3945e7f-6a83-42c0-a7d6-27dc5d2a39ba" alt="Image" width="900">
 </p>
 
 
@@ -439,7 +441,7 @@ In OpenLane, the "prep" step is crucial for setting up the file structure and me
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/059d8a39-f5fe-4a0a-a3aa-640985ccb858" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/f8536765-760b-4fc9-9260-c80e5301ceef" alt="Image" width="900">
 </p>
 
 
@@ -460,7 +462,7 @@ After running the ```prep``` command, you'll find a well-structured project dire
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/eb50acff-e559-4cd1-9b18-98f1ec428af6" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a8bf5eff-9df6-4cff-b7e0-05f830c96b18" alt="Image" width="900">
 </p>
 
 
@@ -517,12 +519,6 @@ Results at the end of the synthesis process:
 4. Operating frequency and respective timing reports
 
 
-a snap of the netlist : 
-
-
-<p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/1abe69c2-91ae-412f-8d50-c483334b2fe4" alt="Image" width="900">
-</p>
 
 
 # Day 2: Floorplanning
@@ -769,7 +765,6 @@ Standard cell library contains a description of different variety of cells
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e9b8419a-fe76-4fbe-846d-136b1586085d" alt="Image" width="600">
 </p>
 
-![Screenshot 2023-09-17 200713]()
 
 ---
 
@@ -781,8 +776,9 @@ To perform characterzation  [GUNA tool](https://www.paripath.com/Products/Guna) 
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e9b8419a-fe76-4fbe-846d-136b1586085d" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/25d8ef79-527a-4dd7-a3e8-57fa722425b0" alt="Image" width="600">
 </p>
+
 
 
 ---
@@ -875,21 +871,22 @@ Since we are performing a DC analysis, use dc1 to prepare the DC plot.
 
 To see all the available vectors for plotting, type: display
 
+
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6b0229ef-7cea-4dea-b35e-6f185ffda868" alt="Display Vectors" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/60d00019-222f-4e4b-9121-8225bdbbcf75" alt="Display Vectors" width="600">
 </p>
 
 To plot Vout vs. Vin, use the command: plot vout vs vin
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/79eec2df-f932-4ab0-ad3d-4a07f43852e" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a2cc5e88-4621-425e-be7a-905d4578165a" width="600">
 </p>
 
 
 To obtain a symmetric DC plot, you can scale the aspect ratio of PMOS by 2.5 times.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/8d55b2de-6ec6-4083-92e4-23daf21c1c22" alt="Symmetric DC Plot" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/caf67b83-f2e1-4356-a200-9d34994cda71" alt="Symmetric DC Plot" width="600">
 </p>
 
 
@@ -897,31 +894,16 @@ To obtain a symmetric DC plot, you can scale the aspect ratio of PMOS by 2.5 tim
 The Vin = Vout point is crucial as it indicates when both transistors are active, leading to peak power consumption.
 
 <p align="center">
-  <img src="(https://github.com/VardhanSuroshi/pes_pd/assets/132068498/c842b8d6-fa87-4a66-ae3c-713f3b5c2b1b" alt="Vin = Vout Point" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a89e516d-1cdb-4561-9bfc-c706d4daecb2" alt="Vin = Vout Point" width="600">
 </p>
-
-You can vary the CMOS inverter threshold value to make it symmetric and robust.
-
-<p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/72954c80-a83f-4262-b512-c4dc5842d6a5" alt="Threshold Variation" width="600">
-</p>
-
-These steps guide you through the SPICE simulation process using Ngspice, enabling you to visualize and analyze the behavior of your circuit.
-
-
-
 
 
 The symmetric DC plot can be achieved by adjusting the PMOS aspect ratio.
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/2dda74a3-3575-466b-900c-6ef343277a57" alt="Threshold Variation" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/89922196-3066-4088-9730-a003e8248458" alt="Threshold Variation" width="600">
 </p>
-
-
-The Vin = Vout point is crucial, as it signifies when both transistors are active, leading to peak power consumption.
-
 
 
 
