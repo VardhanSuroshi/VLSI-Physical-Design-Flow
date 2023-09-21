@@ -222,7 +222,7 @@ To develop an ASIC efficiently, you need three key components:
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/5be0a2b3-31d8-4428-a67c-f369305f4c64" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/9e49ecfe-b9d1-4695-8b84-d56565633d1e" alt="Image" width="600">
 </p>
 
 
@@ -253,7 +253,7 @@ OpenLane is an open-source automated toolchain for designing Application-Specifi
 ### OpenLane Integrated Tools
 OpenLane flow consists of several stages. By default, all flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLane can also be run interactively.
 
-![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/c216442f-36bd-45e4-8659-2de69d4945d8)
+![image](https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e773cf4e-5e90-4458-a05d-35c64b858a84)
 
 
 
@@ -353,7 +353,7 @@ All the designs, we are going to use in this lab are present under the design di
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/d4c8f8c4-0c0e-4435-bbe9-3fbe58978d02" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/7d8e18ed-4d2f-4a3f-96ba-bb8acc55e60a" alt="Image" width="900">
 </p>
 
 
@@ -375,7 +375,7 @@ In each design hierarchy, you will find two distinct components:
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ac2dc627-8ced-4a78-ab35-d65b6744edd4" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/2a114436-5f3c-467d-8644-27ac0f955faf" alt="Image" width="900">
 </p>
 
 
@@ -386,7 +386,7 @@ here is the comparsion between ```config.tcl``` and ```sky130A_sky130_fd_sc_hd_c
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/cc021a4b-9ce4-4820-9a61-c2bdf1d1a8a7" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/2b5b7b54-1cdc-4fcd-ace3-de1ff7792124" alt="Image" width="900">
 </p>
 
 
@@ -439,7 +439,7 @@ In OpenLane, the "prep" step is crucial for setting up the file structure and me
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/c9661546-4ddd-43e7-a871-3e3bbfac5d34" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/059d8a39-f5fe-4a0a-a3aa-640985ccb858" alt="Image" width="900">
 </p>
 
 
@@ -460,7 +460,7 @@ After running the ```prep``` command, you'll find a well-structured project dire
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/aca81212-fdd9-414e-a450-ce1715793378" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/eb50acff-e559-4cd1-9b18-98f1ec428af6" alt="Image" width="900">
 </p>
 
 
@@ -476,7 +476,7 @@ Inside this directory, you'll find various reports specific to the tools used in
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ed942b85-817c-4ad4-b0c0-84a1bff79b9d" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/0e8ff9c5-a00c-4587-ad08-653e0a867ae1" alt="Image" width="900">
 </p>
 
 
@@ -487,7 +487,7 @@ Inside this directory, you'll find various reports specific to the tools used in
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ce558ea3-a100-4a9a-b4ef-97cb0f608d52" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/86f8a1c4-8380-42ef-bb58-07911ea0061b" alt="Image" width="900">
 </p>
 
 
@@ -500,7 +500,7 @@ By modifying the CLK period, you can effectively manage the timing constraints a
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b2e3a45c-40a4-4377-badc-dbc74f6fed7e" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/14c3bf7d-e5d1-43d5-9351-86522e734bd8" alt="Image" width="900">
 </p>
 
 
@@ -583,7 +583,7 @@ OpenLane has many commands that can used to customize Floorplan design. A compre
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/61d8ca74-81f3-4cba-b912-32970bbfe837" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/3ca5e353-9a40-484c-805a-e165454be0f4" alt="Image" width="900">
 </p>
 
 
@@ -603,7 +603,7 @@ we can see the following message on successful floorplan execution :
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b7f4c250-dae6-461b-80eb-2eac80027d70" alt="Image" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/3d305975-d598-45b7-b9d2-8844c3968b5b" alt="Image" width="900">
 </p>
 
 
@@ -628,13 +628,13 @@ Magic has the following GUI interface and a console window to execute commands
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e6c91984-7bfc-428d-934d-59c148a4b9ac" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/222ada54-011b-4976-a0cb-67ea64734587" alt="Image" width="600">
 </p>
 
 if we zoom in a little we can see that some of the micro, IO pad, and tap-cells have been placed appropriately. 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/3c77fa69-17d5-4240-a7c7-f2bf4b6119d0" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/22d9ebfe-e9c2-46d4-b2bf-edfce70a3f00" alt="Image" width="600">
 </p>
 
 
@@ -684,7 +684,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ```
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/517d6c11-fe43-4f6c-a7ec-11db12eaf91d" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/410ff07d-c7b5-48ad-8452-e32920659ec4" alt="Image" width="600">
 </p>
 
 
@@ -692,7 +692,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 zoomed view of the core with all the standard cells placed in between power can ground rail 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/34d18189-7cf7-4ad6-a0d7-d705e19d5b4d" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/3f6eff27-45f2-4dab-bfec-6c3306c65162" alt="Image" width="600">
 </p>
 
 ---
@@ -713,7 +713,7 @@ Standard cell library contains a description of different variety of cells
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6e15b59e-3062-41d8-970e-e9af3c93775f" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/4a5f81a6-4e04-4b3a-89f7-026e680881fb)" alt="Image" width="600">
 </p>
 
 
@@ -723,8 +723,9 @@ Standard cell library contains a description of different variety of cells
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ef9de032-7f16-4003-980e-ac7333831412" alt="Image" width="400">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/0bc7fd70-b7cc-488f-8996-7bdc3ce43b86" alt="Image" width="400">
 </p>
+
 
 ---
 ### 1. Inputs
@@ -733,7 +734,7 @@ Standard cell library contains a description of different variety of cells
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/52704541-c7c5-445a-9e48-20939f08b9ea" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/855541eb-9323-4666-a719-c8e8ba1d83ea alt="Image" width="600">
 </p>
 
 
@@ -743,7 +744,7 @@ Standard cell library contains a description of different variety of cells
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a58788e4-49a2-419a-aee2-20b975d42782" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b0fec785-7f8f-4e2c-9371-e84bd4f4b666 alt="Image" width="600">
 </p>
 
 ---
@@ -754,7 +755,7 @@ Standard cell library contains a description of different variety of cells
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/9b4c5107-6846-4053-aaf8-4b375776c6d2" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/bd0464ee-57a8-46e8-8a55-9d17b6cca1d7" alt="Image" width="600">
 </p>
 
 
@@ -765,9 +766,10 @@ Standard cell library contains a description of different variety of cells
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/76fc4dfe-b219-4672-adbb-0f5ec8c1adff" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e9b8419a-fe76-4fbe-846d-136b1586085d" alt="Image" width="600">
 </p>
 
+![Screenshot 2023-09-17 200713]()
 
 ---
 
@@ -779,7 +781,7 @@ To perform characterzation  [GUNA tool](https://www.paripath.com/Products/Guna) 
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/9fe55d1b-aedf-4073-b6ad-1cce804ce635" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e9b8419a-fe76-4fbe-846d-136b1586085d" alt="Image" width="600">
 </p>
 
 
@@ -789,7 +791,7 @@ Additionally, we need to define the timing definition such as :
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/61fe504e-6f76-4533-ab2d-fc63580022fe" alt="Image" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/9f0e77dd-ba2a-4d23-a44d-0deac2af57e9" alt="Image" width="600">
 </p>
 
 
@@ -858,15 +860,17 @@ Follow these steps for SPICE simulation:
 Source the circuit file in Ngspice using the command: source <file_name>.cir
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b161615b-7712-42b2-929d-43f030b23fc8" alt="Source Circuit File" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e56b25fd-a645-4417-816c-0e60ef2144fa" alt="Source Circuit File" width="600">
 </p>
 Once the .cir file is loaded, execute the simulations by typing: run
 
 To prepare for plotting, use the setplot command.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/19be940c-94a8-4a06-8d9f-daaee572758c" alt="Set Plot" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fd6b1c68-b60a-4843-b656-1b0ad3c9cc0d" alt="Set Plot" width="600">
 </p>
+
+
 Since we are performing a DC analysis, use dc1 to prepare the DC plot.
 
 To see all the available vectors for plotting, type: display
@@ -874,26 +878,34 @@ To see all the available vectors for plotting, type: display
 <p align="center">
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6b0229ef-7cea-4dea-b35e-6f185ffda868" alt="Display Vectors" width="600">
 </p>
+
 To plot Vout vs. Vin, use the command: plot vout vs vin
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/f4f87448-db9d-4f8b-ac22-8b59798934c9" alt="Vout vs. Vin Plot" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/79eec2df-f932-4ab0-ad3d-4a07f43852e" width="600">
 </p>
+
+
 To obtain a symmetric DC plot, you can scale the aspect ratio of PMOS by 2.5 times.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/2dda74a3-3575-466b-900c-6ef343277a57" alt="Symmetric DC Plot" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/8d55b2de-6ec6-4083-92e4-23daf21c1c22" alt="Symmetric DC Plot" width="600">
 </p>
+
+
+
 The Vin = Vout point is crucial as it indicates when both transistors are active, leading to peak power consumption.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6c375afd-8b34-4da8-8fd3-235614d94fde" alt="Vin = Vout Point" width="600">
+  <img src="(https://github.com/VardhanSuroshi/pes_pd/assets/132068498/c842b8d6-fa87-4a66-ae3c-713f3b5c2b1b" alt="Vin = Vout Point" width="600">
 </p>
+
 You can vary the CMOS inverter threshold value to make it symmetric and robust.
 
 <p align="center">
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/72954c80-a83f-4262-b512-c4dc5842d6a5" alt="Threshold Variation" width="600">
 </p>
+
 These steps guide you through the SPICE simulation process using Ngspice, enabling you to visualize and analyze the behavior of your circuit.
 
 
@@ -946,7 +958,7 @@ Vin in 0 0 pulse 0 2.5 0 10p 10p 1n 2n   ; Voltage source Vin with a pulse wavef
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/aebccb6b-a705-42a4-b23a-c1a4772d5969" alt="Threshold Variation" width="400">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e6eb8010-bdfc-4d3c-9afd-fbce22f1c338" width="400">
 </p>
 
 
@@ -1029,8 +1041,10 @@ This step creates pockets for NMOS and PMOS
 Magic is a venerable VLSI layout tool, written in the 1980s at Berkeley by John Ousterhout, now famous primarily for writing the scripting interpreter language Tcl. Due largely in part to its liberal Berkeley open-source license, magic has remained popular with universities and small companies. The open-source license has allowed VLSI engineers with a bent toward programming to implement clever ideas and help magic stay abreast of fabrication technology. However, it is the well-thought-out core algorithms that lend to magic the greatest part of its popularity. Magic is widely cited as being the easiest tool to use for circuit layout, even for people who ultimately rely on commercial tools for their product design flow.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b4014bc5-6fda-4aaf-95a4-931bf593532d" alt="Magic Tool" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/e508c52a-9f9a-49f5-9f2d-880c4225dabd" alt="Magic Tool" width="600">
 </p>
+
+
 
 Download the files required for this lab from:
 
@@ -1041,7 +1055,7 @@ https://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
 ### SkyWater SKY130 PDK
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6614932a-f877-4a13-8d78-385b375e8a6c" alt="SKY130 PDK" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/5326f145-526e-46ea-9f07-cef5a6d8d028" alt="SKY130 PDK" width="600">
 </p>
 
 SKY130 is a mature 180nm-130nm hybrid technology developed by Cypress Semiconductor that has been used for many production parts. SKY130 is now available as a foundry technology through SkyWater Technology Foundry.
@@ -1061,19 +1075,19 @@ Details about SKY130 PDK can be found [here](https://skywater-pdk.readthedocs.io
 Every design rule has a code that can be used to refer to the documentation.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/1da2d70a-b8be-4bf0-a4d2-ad33ff0d946d" alt="Design Rule Codes" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ff9389e1-e594-49a3-9bb1-73fe5052e46b" alt="Design Rule Codes" width="600">
 </p>
 
 Select a particular layer (hover over the layer and click S) and type `drc why` to know what the DRC violation is.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/855b1956-97f7-4739-9ca5-6e97a4250d49" alt="DRC Violation" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/931a060e-ddd0-406e-928d-c8e16f3eac6e" alt="DRC Violation" width="600">
 </p>
 
 To add contact cuts, add `met3` contact by selecting an area and clicking on `m3contact` using the middle mouse button. Then type `cif see VIA2` in Tkcon prompt.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/1e30f00d-bf5e-4545-92a1-c009e364fe6f" alt="Adding Contact Cuts" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/2c2e9ca1-b828-40a2-9e74-a4d84ecb7ef3" alt="Adding Contact Cuts" width="600">
 </p>
 
 
@@ -1125,14 +1139,16 @@ magic -T sky130A.tech sky130_inv.mag &
 ```
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/9503de62-43d4-4e9e-ad4b-da7d0e7b6df2" alt="Inverter Layout" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6e3ec31f-f7a1-4061-acef-c8d27e963d76" alt="Inverter Layout" width="600">
 </p>
+
 
 Hover over the region for which you want more details and select the region by pressing `s`. Then type `what` in the console window to get information about the layer.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/f420408c-924d-4613-abd1-6d6a43bea99e" alt="Magic Layer Details" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/8950b191-3831-403f-b800-43033fce1f59" width="600">
 </p>
+
 
 For a detailed guide on designing the inverter layout from scratch, visit this [repository](https://github.com/nickson-jose/vsdstdcelldesign).
 
@@ -1141,20 +1157,23 @@ For a detailed guide on designing the inverter layout from scratch, visit this [
 DRC check in Magic happens in real time. Any DRC errors are immediately reflected in the DRC icon on the toolbar.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/8fc23e9b-b4ff-4ace-9acd-685409a2cf8f" alt="DRC Checks" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/f1b02222-95d3-4746-b184-542fea6b9cd6" alt="DRC Checks" width="600">
 </p>
+
 
 Extract Parasitics in Magic:
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/58421af5-23a7-4da9-8693-88154149b25e" alt="Extract PEX" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/b2e1a688-1246-4058-b573-381c866856db" alt="Extract PEX" width="600">
 </p>
+
 
 This creates a spice deck for simulation with all the parasitics.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/d046b687-4fb0-4820-b18d-96913d6c03ef" alt="Spice Deck" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/d06563e2-5552-4bb9-81ee-a8dd4132e866" alt="Spice Deck" width="600">
 </p>
+
 
 The above file has details of the inverter netlist, but the sources and their values are not specified. Modify the file as follows:
 
@@ -1166,12 +1185,9 @@ The above file has details of the inverter netlist, but the sources and their va
 Modified SPICE Deck:
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/6d14a996-7054-45e2-bd87-a29e9432d3b4" alt="Modified Spice Deck" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/92010826-fc38-47cc-813c-d6939d9831bc" alt="Modified Spice Deck" width="600">
 </p>
 
-<p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fd7a174c-7a66-4e47-b80b-ec6fa4ec5e0f" alt="Modified Spice Deck" width="600">
-</p>
 
 To run the spice netlist simulation, use the command on the terminal:
 
@@ -1185,6 +1201,11 @@ Plot the transient analysis using:
 plot y vs time a
 ```
 
+<p align="center">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/37abeb15-6229-450a-a537-7b54a9509f84" alt="Transient Analysis Zoom" width="600">
+</p>
+
+
 Zoom in on the transient analysis at 1.65V to get timing values.
 
 <p align="center">
@@ -1194,7 +1215,7 @@ Zoom in on the transient analysis at 1.65V to get timing values.
 Click on the desired point, and the terminal will reflect the exact x and y values.
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/41100448-7c4b-488d-b7aa-62e6ebe3779b" alt="Terminal Values" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fbe99f37-28c7-4c30-a3cd-81d0f922270f" alt="Terminal Values" width="600">
 </p>
 
 
@@ -1241,8 +1262,9 @@ To ensure proper functionality and compatibility with the PnR tool, it's crucial
    
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fc38350f-d74b-49d0-8f94-f1d03bf469a4" alt="Grid Information for Standard Cells" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/8e21ccfd-d70a-4c73-bfd5-8ab8344dd482" alt="Grid Information for Standard Cells" width="600">
 </p>
+
 
 
 
@@ -1255,19 +1277,21 @@ By aligning with these guidelines, you can ensure that your standard cells are c
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/4b01c209-f2f4-451c-8e0b-f490ee9745c9" alt="Layout Before Grid Info" width="300">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/9370ddbf-bc26-419d-a13a-a556c1e0eb76" alt="Layout Before Grid Info" width="300">
 </p>
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/a8ce6b53-9df1-4700-8cfc-ad8d210db9fa" alt="Layout Before Grid Info" width="300">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/98b53daf-7321-429a-b472-89481178b587" alt="Layout Before Grid Info" width="300">
 </p>
 
 **After Setting Grid Info:**
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/74b603e6-e282-4419-851c-7537adfd308b" alt="Layout after Grid Info" width="400">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ebbf822d-53d9-49aa-981e-77944726e483" alt="Layout after Grid Info" width="400">
 </p>
+
+
 
 
 By reviewing the layout, you can confirm that pins A and Y are appropriately placed at the intersection of X and Y tracks, meeting the first condition. Additionally, the PR boundary adheres to a width of 3 grids and a height of 9 grids, satisfying the second condition.
@@ -1321,7 +1345,7 @@ Following these steps will result in the creation of an LEF file that encapsulat
 
 
 
-## Including Custom Cells in OpenLANE
+## Including Custom Cells in OpenLane
 
 To integrate custom cells into OpenLANE effectively, follow these initial configuration steps:
 
