@@ -1189,13 +1189,7 @@ plot y vs time a
 </p>
 
 
-Zoom in on the transient analysis at 1.65V to get timing values.
-
-<p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/1e11a409-2f08-4c89-bd2a-9538786427d1" alt="Transient Analysis Zoom" width="600">
-</p>
-
-Click on the desired point, and the terminal will reflect the exact x and y values.
+Zoom in on the transient analysis at 1.65V to get timing values.Click on the desired point, and the terminal will reflect the exact x and y values.
 
 <p align="center">
   <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fbe99f37-28c7-4c30-a3cd-81d0f922270f" alt="Terminal Values" width="600">
@@ -1279,7 +1273,6 @@ By aligning with these guidelines, you can ensure that your standard cells are c
 
 By reviewing the layout, you can confirm that pins A and Y are appropriately placed at the intersection of X and Y tracks, meeting the first condition. Additionally, the PR boundary adheres to a width of 3 grids and a height of 9 grids, satisfying the second condition.
 
-These guidelines are crucial for a seamless and effective place and route process, ultimately contributing to the successful design of integrated circuits.
 
 
 ## LEF File Generation from Modified Layout
@@ -1303,7 +1296,7 @@ Once you have perfected your layout with the specified grid settings, you can pr
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/eb6de418-9f1a-4a5b-b1e6-645d1da78690" alt="Layout Before Grid Info" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/5d6c0981-c9a4-40c7-a659-0c1ccfd66533" alt="Layout Before Grid Info" width="600">
 </p>
 
 
@@ -1317,14 +1310,6 @@ Once you have perfected your layout with the specified grid settings, you can pr
    This command instructs Magic to write the layout information into an LEF file.
 
 Following these steps will result in the creation of an LEF file that encapsulates the layout details of your design. This LEF file can then be used for various design and integration purposes in the overall chip design process.
-
-
-
-<p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/ea59bcbd-f45f-4c99-bec5-b9411a42aec9" alt="Layout Before Grid Info" width="600">
-</p>
-
-
 
 
 
