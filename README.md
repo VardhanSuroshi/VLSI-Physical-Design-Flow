@@ -14,7 +14,7 @@ OpenLANE represents a revolutionary automated RTL to GDSII flow, integrating ess
 - **Automated ASIC Design**: Proficiency in leveraging automated RTL to GDSII flows.
 - **Open-Source Toolchain**: Mastery of open-source tools such as Yosys, Magic, and Netgen.
 - **Design Exploration**: Skill in using custom methodology scripts for design exploration and optimization.
-- **Skywater 130nm PDK**: Expertise in working with the Skywater 130nm open-source Process Design Kit.
+- **Skywater 130nm PDK**: Expertise in working with the Skywater 130nm open-source Process Design Kit. 
 - **Hands-On Chip Development**: Experience in producing hard macros and complete chips autonomously.
 
 
