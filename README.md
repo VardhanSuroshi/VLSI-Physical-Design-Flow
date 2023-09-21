@@ -1032,7 +1032,7 @@ This step creates pockets for NMOS and PMOS
 
 
 <p align="center">
-  <img src="https://github.com/yagnavivek/PES_OpenLane_PD/assets/93475824/0e355a75-55ff-4723-96ae-4abd5845697c" alt="Magic Layer Details" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/be303336-1553-4b9a-b8df-885998f5f6d9" alt="Magic Layer Details" width="600">
 </p>
 
 
@@ -1094,12 +1094,14 @@ To add contact cuts, add `met3` contact by selecting an area and clicking on `m3
 Magic techfile is under development and there may be some DRC violations that might not get reflected such violations are marked under incomplete DRC rules. Let's look at an example of a DRC violation and try correcting the rule file to capture the DRC error. Here is a violation 
 
 <p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/25ecd4e0-a818-478b-bd23-9832bf88d536" alt="Fixing Errors" width="400">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/7cc71eac-1ff4-4f41-925b-ce240b86844e" alt="Fixing Errors" width="400">
 </p>
+
+
 
 here is the description of the violation from the sky130 water PDK documentation under DRC rules : 
 <p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/46257981-a308-4be5-b684-ddedb0defc79" alt="Error" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/98677f46-9550-4d56-a0a2-20b3a277dd6d" alt="Error" width="900">
 </p>
 
 
@@ -1107,17 +1109,16 @@ here is the description of the violation from the sky130 water PDK documentation
 To fix the error, open the `sky130A.tech` file using an editor search for `poly.9` and make the changes.
 
 <p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/b78688b0-689a-4f18-af77-198c087daf32" alt="Fix Error in sky130A.tech" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/57b4b982-8648-45ee-b1b9-486f9730974a" alt="Fix Error in sky130A.tech" width="900">
 </p>
 
-<p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/46d73847-29cc-4171-9746-1bb51090b71c" alt="Fix Error in sky130A.tech" width="900">
-</p>
+
+
 
 Now load the `sky130A.tech` file again and type the command `drc check` to reflect the changes made in the tech file. Post-editing the DRC violation will highlight the error
 
 <p align="center">
-  <img src="https://github.com/Anirudh-Ravi123/pes_pd/assets/142154804/5fe12345-e777-4215-9a15-c807b4d7ccae" alt="Run DRC Check" width="900">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/98f117d4-8942-4b35-a92b-759f23b704b6" alt="Run DRC Check" width="900">
 </p>
 
 
