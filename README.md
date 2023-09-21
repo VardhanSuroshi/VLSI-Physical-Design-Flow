@@ -1245,7 +1245,7 @@ To ensure proper functionality and compatibility with the PnR tool, it's crucial
    
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/8e21ccfd-d70a-4c73-bfd5-8ab8344dd482" alt="Grid Information for Standard Cells" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/c730f91c-5ca9-4905-81a6-3819c6728ef5" alt="Grid Information for Standard Cells" width="600">
 </p>
 
 
@@ -1341,10 +1341,10 @@ To integrate custom cells into OpenLANE effectively, follow these initial config
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/fd1ff26b-bf96-4922-a559-1744989ca9cf" alt="Layout Before Grid Info" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/4bdc3b87-afa2-44e2-b3bb-12fbdfe81519" alt="Layout Before Grid Info" width="600">
 </p>
 
-  
+
 
 4. **Overwrite Previous Run:** When running OpenLANE for the project, overwrite any previous runs with the new configuration switches to include the custom cell.
 
@@ -1354,7 +1354,7 @@ To integrate custom cells into OpenLANE effectively, follow these initial config
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/984fb159-dbf4-445f-b876-b3681fcf8612" alt="Layout Before Grid Info" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/cd73c19b-2631-4c4c-aecd-0ec9b3966b58" alt="Layout Before Grid Info" width="600">
 </p>
 
 
@@ -1364,7 +1364,7 @@ To integrate custom cells into OpenLANE effectively, follow these initial config
 
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/3afd50f7-ec48-4f5b-93ad-182af0d8adf3" alt="Layout Before Grid Info" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/43a8853c-25aa-42a4-8a77-344f68ad3d80" alt="Layout Before Grid Info" width="600">
 </p>
 
 
@@ -1376,7 +1376,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ```
 
 <p align="center">
-  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/45a52127-d14f-442f-9334-8d997997fb8d" alt="Layout Before Grid Info" width="600">
+  <img src="https://github.com/VardhanSuroshi/pes_pd/assets/132068498/04f84131-c09a-43c1-983e-bf71581f8196" alt="Layout Before Grid Info" width="600">
 </p>
 
 
